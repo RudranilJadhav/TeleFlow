@@ -1,35 +1,99 @@
-import socket
+import threading
 import numpy as np
-from faster_whisper import WhisperModel
 import ffmpeg
+from faster_whisper import WhisperModel
 
-# Whisper Setup
-model = WhisperModel("tiny", device="cuda", compute_type="int8")
+model = WhisperModel(
+    "small",
+    device="cuda",
+    compute_type="int8"
+)
 
+# =========================
+# ffmpeg stderr reader
+# =========================
+def read_ffmpeg_stderr(process):
+    for line in iter(process.stderr.readline, b""):
+        print("ffmpeg:", line.decode(errors="ignore").strip())
+
+# =========================
+# Main streaming function
+# =========================
 def stream_to_whisper():
-    # Use ffmpeg to listen to the UDP port and convert to 16k mono PCM
-    # This replaces your socket.recvfrom logic
+    print("Starting ffmpeg RTP listener...")
+
     process = (
         ffmpeg
-        .input('udp://0.0.0.0:9999', format='mp3') # Change format if source isn't MP3
-        .output('-', format='s16le', acodec='pcm_s16le', ac=1, ar='16k')
+        .input(
+            "src/services/pcmu.sdp",
+            protocol_whitelist="file,udp,rtp",
+            fflags="nobuffer",
+            flags="low_delay"
+        )
+        .output(
+            "-",
+            format="s16le",
+            acodec="pcm_s16le",
+            ac=1,
+            ar="16000"
+        )
         .run_async(pipe_stdout=True, pipe_stderr=True)
     )
 
-    print("Listening for audio...")
+    print("ffmpeg started, pid:", process.pid)
+
+    # Start stderr reader
+    threading.Thread(
+        target=read_ffmpeg_stderr,
+        args=(process,),
+        daemon=True
+    ).start()
+
+    SAMPLE_RATE = 16000
+    BYTES_PER_SAMPLE = 2
+    CHUNK_SECONDS = 2
+
+    TARGET_BYTES = SAMPLE_RATE * BYTES_PER_SAMPLE * CHUNK_SECONDS
+    buffer = bytearray()
+
+    print("🎧 Listening for audio...")
 
     while True:
-        # Read 5 seconds of audio at a time (16000 samples * 2 bytes * 5s)
-        in_bytes = process.stdout.read(16000 * 2 * 5)
-        if not in_bytes:
-            break
-            
-        # Convert bytes to NumPy array
-        audio_data = np.frombuffer(in_bytes, np.int16).flatten().astype(np.float32) / 32768.0
-        
-        # Transcribe chunk
-        segments, _ = model.transcribe(audio_data, beam_size=5)
-        for segment in segments:
-            print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
+        data = process.stdout.read(4096)
 
-stream_to_whisper()
+        if not data:
+            continue
+
+        # Debug heartbeat (comment later)
+        print("audio bytes:", len(data))
+
+        buffer.extend(data)
+
+        if len(buffer) < TARGET_BYTES:
+            continue
+
+        # Take exact chunk
+        chunk = buffer[:TARGET_BYTES]
+        del buffer[:TARGET_BYTES]
+
+        audio = (
+            np.frombuffer(chunk, np.int16)
+            .astype(np.float32) / 32768.0
+        )
+
+        segments, info = model.transcribe(
+            audio,
+            beam_size=5,
+            vad_filter=False
+        )
+
+        for seg in segments:
+            text = seg.text.strip()
+            if text:
+                print(f"[{seg.start:.2f}s → {seg.end:.2f}s] {text}")
+
+# =========================
+# Entry point
+# =========================
+if __name__ == "__main__":
+    stream_to_whisper()
