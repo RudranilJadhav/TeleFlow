@@ -1,2 +1,5 @@
 requests 
 websocket-client
+silero-vad
+faster_whisper
+numpy
