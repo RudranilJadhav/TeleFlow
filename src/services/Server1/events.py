@@ -173,8 +173,3 @@ def run():
     # Use ping/pong to keep connection alive
     ws.run_forever(ping_interval=30, ping_timeout=10)
 
-if __name__ == "__main__":
-    try:
-        run()
-    except KeyboardInterrupt:
-        print("\nStopping...")
