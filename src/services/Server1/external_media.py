@@ -16,7 +16,7 @@ def stream_to_whisper(text_queue: Queue):
     vad_model = load_silero_vad().to("cpu")
 
     whisper_model = WhisperModel(
-        "tiny.en",
+        "small.en",
         device="cpu",
         compute_type="int8"
     )
