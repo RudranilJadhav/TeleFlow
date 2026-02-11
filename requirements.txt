@@ -4,3 +4,4 @@ silero-vad
 faster_whisper
 numpy
 lmstudio
+piper-tts

@@ -1,7 +1,8 @@
 import lmstudio
-
+from multiprocessing import Queue
 qwen = lmstudio.llm("mistralai/ministral-3-3b")
 print("mistralai/ministral-3-3b Loaded")
+from main import out_queue
 
 chat = lmstudio.Chat(
     "You are an AI voice agent named Jarvis. "
@@ -39,10 +40,9 @@ def run_llm(text_queue):
 
         print("Assistant: ", end="", flush=True)
         assistant_response = ""
-        chat.add_user_message("/no_think")
         for fragment in qwen.respond_stream(chat,config={"temperature":0.2}):
             print(fragment.content, end="", flush=True)
             assistant_response += fragment.content
-
+            out_queue.put(fragment.content)
         chat.add_assistant_response(assistant_response)
         print("\n")
