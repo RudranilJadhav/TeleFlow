@@ -1,2 +1,5 @@
 venv/
 .env
+src/services/Server1/__pycache__
+src/services/Server1/en_US-ryan-high.onnx
+src/services/Server1/en_US-ryan-high.onnx.json

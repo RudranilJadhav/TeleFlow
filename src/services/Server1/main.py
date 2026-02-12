@@ -4,7 +4,7 @@ import threading
 from brain import run_llm
 from events import run as run_events
 from external_media import stream_to_whisper
-from piper import run_piper
+from tts import run_piper
 
 if __name__ == "__main__":
 
@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     threading.Thread(
         target=run_llm,
-        args=(text_queue,),
+        args=(text_queue,out_queue),
         daemon=True
     ).start()
 
@@ -36,6 +36,8 @@ if __name__ == "__main__":
     
     p_events.start()
     p_asr.start()
+    p_piper.start()
 
+    p_piper.join()
     p_asr.join()
     p_events.join()
