@@ -1,30 +1,10 @@
-# import sounddevice as sd
-# from piper import PiperVoice
-
-# def run_piper(out_queue):
-#     voice = PiperVoice.load(
-#         "en_US-ryan-high.onnx",
-#         config_path="en_US-ryan-high.onnx.json"
-#     )
-
-#     while True:
-#         text = out_queue.get()
-#         if text is None:
-#             break
-
-#         for chunk in voice.synthesize(text):
-#             # chunk.samples is already a NumPy int16 array
-#             sd.play(chunk.samples, samplerate=chunk.sample_rate)
-#             sd.wait()
-
-
 import subprocess
 from piper import PiperVoice
 
 def run_piper(out_queue):
     voice = PiperVoice.load(
-        "en_US-ryan-high.onnx",
-        config_path="en_US-ryan-high.onnx.json"
+        "en_US-ryan-low.onnx",
+        config_path="en_US-ryan-low.onnx.json"
     )
 
     aplay = None

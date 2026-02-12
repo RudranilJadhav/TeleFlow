@@ -3,3 +3,5 @@ venv/
 src/services/Server1/__pycache__
 src/services/Server1/en_US-ryan-high.onnx
 src/services/Server1/en_US-ryan-high.onnx.json
+src/services/Server1/en_US-ryan-low.onnx
+src/services/Server1/en_US-ryan-low.onnx.json

@@ -78,7 +78,7 @@ def stream_to_whisper(text_queue: Queue):
                     speech_buffer,
                     beam_size=5,
                     vad_filter=False,
-                    initial_prompt="Hello"
+                    # initial_prompt="Hello"
                 )
 
                 for seg in segments:
