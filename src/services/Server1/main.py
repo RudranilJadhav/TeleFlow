@@ -1,6 +1,5 @@
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue , Event
 import threading
-
 from brain import run_llm
 from events import run as run_events
 from external_media import stream_to_whisper
@@ -10,16 +9,21 @@ if __name__ == "__main__":
 
     text_queue = Queue()
     out_queue = Queue()
+    text_queue.put("Hello")
+
+    #shared events
+    user_speaking_event = Event()
+    ai_speaking_event = Event()
 
     threading.Thread(
         target=run_llm,
-        args=(text_queue,out_queue),
+        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event),
         daemon=True
     ).start()
 
     p_asr = Process(
         target=stream_to_whisper,
-        args=(text_queue,),
+        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event),
         name="ASR"
     )
 
@@ -30,7 +34,7 @@ if __name__ == "__main__":
 
     p_piper = Process(
         target=run_piper,
-        args=(out_queue,),
+        args=(out_queue,user_speaking_event,ai_speaking_event),
         name="PIPER"
     )
     

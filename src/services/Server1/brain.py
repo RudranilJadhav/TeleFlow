@@ -30,7 +30,7 @@ def clean_llm_output(text: str) -> str:
     return text
 
 qwen = lmstudio.llm("mistralai/ministral-3-3b")
-# print("mistralai/ministral-3-3b")
+print("mistralai/ministral-3-3b")
 
 
 chat = lmstudio.Chat(
@@ -77,13 +77,14 @@ chat = lmstudio.Chat(
 "Switch intelligently between modes."
 )
 
-def run_llm(text_queue,out_queue):
+def run_llm(text_queue,out_queue,user_speaking_event,ai_speaking_event):
     while True:
         text = text_queue.get()
         if text is None:
             break
         print("\nUser:", text)
         chat.add_user_message(text)
+        ai_speaking_event.set()
         # print("Assistant: ", end="", flush=True)
         assistant_response = ""
         sentence_buffer = ""
@@ -91,14 +92,23 @@ def run_llm(text_queue,out_queue):
         for fragment in qwen.respond_stream(chat,config={
                                                 "temperature": 0.5,
                                                 "top_p": 0.85,
-                                                "max_tokens": 200,
+                                                "max_tokens": 50,
                                                 "repetition_penalty": 1.1,
                                                 "presence_penalty": 0.2,
                                                 "frequency_penalty": 0.2,
-                                                "stop": ["</think>", "\nUser:","*","(",")"],
+                                                "stop": ["</think>", "\nUser:","*"],
                                                 "stream": True,
                                                 "batch_size": 1
                                                 }):
+            if user_speaking_event.is_set():
+                print("LLM interrupted")
+                ai_speaking_event.clear()
+                while not out_queue.empty():
+                    try:
+                        out_queue.get_nowait()
+                    except:
+                        break
+                break
             output = clean_llm_output(fragment.content)
             if not output.strip():
                 continue
@@ -108,6 +118,8 @@ def run_llm(text_queue,out_queue):
             if re.search(r'[.!?](?:\s|$)', sentence_buffer):
                 out_queue.put(sentence_buffer.strip())
                 sentence_buffer = ""
-        if sentence_buffer:
+        if sentence_buffer and not user_speaking_event.is_set():
             out_queue.put(sentence_buffer)
         chat.add_assistant_response(assistant_response)
+        ai_speaking_event.clear()
+        # print("\n")

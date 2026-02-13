@@ -113,7 +113,7 @@ def on_message(ws, message):
                 ari_request('DELETE', f"bridges/{data['main_bridge']}")
                 ari_request('DELETE', f"bridges/{data['asr_bridge']}")
                 print(f"Ended: {cid}")
-
+                
 def run():
     ws_url = f"{WS_URL}?api_key={USER}:{PASSWORD}&app={APP_NAME}"
     ws = websocket.WebSocketApp(ws_url, on_message=on_message)
