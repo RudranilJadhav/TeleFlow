@@ -30,7 +30,7 @@ def clean_llm_output(text: str) -> str:
     return text
 
 qwen = lmstudio.llm("mistralai/ministral-3-3b")
-print("mistralai/ministral-3-3b")
+# print("mistralai/ministral-3-3b")
 
 
 chat = lmstudio.Chat(
@@ -95,7 +95,7 @@ def run_llm(text_queue,out_queue):
                                                 "repetition_penalty": 1.1,
                                                 "presence_penalty": 0.2,
                                                 "frequency_penalty": 0.2,
-                                                "stop": ["</think>", "\nUser:","*"],
+                                                "stop": ["</think>", "\nUser:","*","(",")"],
                                                 "stream": True,
                                                 "batch_size": 1
                                                 }):
@@ -111,6 +111,3 @@ def run_llm(text_queue,out_queue):
         if sentence_buffer:
             out_queue.put(sentence_buffer)
         chat.add_assistant_response(assistant_response)
-        # print("\n")
-
-        # latency ki mkb ho raha hai 12b pe aur 3b pe reponses chutiya hai koi aur chat freindly 3-5b try kar sakte hai 8b 
