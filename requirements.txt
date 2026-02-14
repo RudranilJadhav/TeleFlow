@@ -6,3 +6,5 @@ numpy
 lmstudio
 piper-tts
 piper
+groq
+python-dotenv
