@@ -1,12 +1,12 @@
 import threading
 import numpy as np
 import ffmpeg
-import torch
 from faster_whisper import WhisperModel
-from silero_vad import load_silero_vad
 from multiprocessing import Queue
 from scipy.signal import butter, lfilter
 import noisereduce as nr
+import torch
+from vad_with_bargein import VADWithBargeIn, BargeInConfig
 
 # =========================
 # AUDIO DSP UTILITIES
@@ -25,36 +25,15 @@ def reduce_noise(x, fs):
         prop_decrease=0.8
     )
 
-def suppress_cough(x):
-    rms = np.sqrt(np.mean(x**2))
-    if rms > 0.08:          # tuned for 16 kHz speech
-        x *= 0.3            # attenuate transient
-    return x
-
-def limiter(x):
-    return np.tanh(x * 2.0)
-
 def preprocess_audio(x, fs=16000):
     x = x.astype(np.float32)
-
-    # DC removal
-    x -= np.mean(x)
-
-    # Speech band
-    x = bandpass(x, fs)
-
-    # Noise suppression (only if long enough)
+    x -= np.mean(x)  # DC removal
+    x = bandpass(x, fs)  # Speech band
+    
     if len(x) > fs * 0.4:
         x = reduce_noise(x, fs)
-
-    # Cough / transient suppression
-    x = suppress_cough(x)
-
-    # Soft limiter
-    x = limiter(x)
-
+    
     return x
-
 
 # =========================
 # FFMPEG STDERR LOGGER
@@ -64,9 +43,8 @@ def read_ffmpeg_stderr(process):
     for line in iter(process.stderr.readline, b""):
         print("ffmpeg:", line.decode(errors="ignore").strip())
 
-
 # =========================
-# MAIN STREAM → VAD → WHISPER
+# MAIN STREAM WITH VAD + BARGE-IN
 # =========================
 
 def stream_to_whisper(
@@ -75,16 +53,32 @@ def stream_to_whisper(
     user_speaking_event,
     ai_speaking_event
 ):
-    # ---- Load models
-    vad_model = load_silero_vad().to("cpu").eval()
-
+    # Configure barge-in detection
+    config = BargeInConfig(
+        vad_threshold=0.3,               # More sensitive
+        speech_threshold=0.4,             # Smoothed speech threshold
+        min_energy=1e-4,                   # Below this is silence
+        max_energy=0.5,                    # Above this is clipping
+        min_speech_for_bargein=200,        # 200ms sustained speech to trigger barge-in
+        min_utterance_ms=400,               # Minimum length to transcribe
+        silence_timeout_ms=400,             # 400ms silence = end of utterance
+        barge_in_cooldown_ms=800,           # Cooldown after barge-in
+        hangover_ms=200,                     # Keep speech active after VAD drop
+        vad_smoothing_window=3,              # Smooth VAD over 3 frames
+        noise_floor_alpha=0.995               # Noise floor adaptation speed
+    )
+    
+    # Create VAD with barge-in
+    vad = VADWithBargeIn(config)
+    
+    # Load Whisper model
     whisper_model = WhisperModel(
         "small.en",
-        device="cpu",
+        device="cuda" if torch.cuda.is_available() else "cpu",
         compute_type="int8"
     )
-
-    # ---- Start FFmpeg RTP decoder
+    
+    # Start FFmpeg RTP decoder
     process = (
         ffmpeg
         .input(
@@ -104,102 +98,90 @@ def stream_to_whisper(
         )
         .run_async(pipe_stdout=True, pipe_stderr=True)
     )
-
+    
     threading.Thread(
         target=read_ffmpeg_stderr,
         args=(process,),
         daemon=True
     ).start()
-
-    # ---- Audio constants
+    
+    # Audio constants
     SAMPLE_RATE = 16000
-    FRAME_SAMPLES = 320        # 20 ms
+    FRAME_SAMPLES = 320  # 20ms frames for reading
     FRAME_BYTES = FRAME_SAMPLES * 2
-    VAD_SAMPLES = 512
-
-    vad_buffer = np.zeros(0, dtype=np.float32)
-    speech_buffer = np.zeros(0, dtype=np.float32)
-    silence_frames = 0
-
+    VAD_FRAME_SAMPLES = int(SAMPLE_RATE * 32 / 1000)  # 32ms for VAD
+    
+    # Buffers
+    audio_buffer = np.zeros(0, dtype=np.float32)
+    
     print("Waiting for speech ...")
-
-    # =========================
-    # STREAM LOOP
-    # =========================
+    
     while True:
+        # Read audio from FFmpeg
         raw = process.stdout.read(FRAME_BYTES)
         if len(raw) < FRAME_BYTES:
             continue
-
+        
+        # Convert to float32
         pcm = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
-        vad_buffer = np.concatenate([vad_buffer, pcm])
-
-        # ---- Process VAD frames
-        while len(vad_buffer) >= VAD_SAMPLES:
-            chunk = vad_buffer[:VAD_SAMPLES]
-            vad_buffer = vad_buffer[VAD_SAMPLES:]
-
-            with torch.no_grad():
-                prob = vad_model(
-                    torch.from_numpy(chunk),
-                    SAMPLE_RATE
-                ).item()
-
-            rms = np.sqrt(np.mean(chunk**2))
-
-            # =========================
-            # SPEECH DETECTED
-            # =========================
-            if prob > 0.7 and rms < 0.2:
-                # ---- Barge-in handling
-                if ai_speaking_event.is_set():
-                    print("Barge-in detected")
-                    ai_speaking_event.clear()
-                    print("LLM interrupted")
-
-                    # Flush TTS queue
-                    while not out_queue.empty():
-                        try:
-                            out_queue.get_nowait()
-                        except:
-                            break
-                    break
-
-                if not user_speaking_event.is_set():
-                    print("User started speaking")
-
+        audio_buffer = np.concatenate([audio_buffer, pcm])
+        
+        # Process in VAD-sized chunks
+        while len(audio_buffer) >= VAD_FRAME_SAMPLES:
+            chunk = audio_buffer[:VAD_FRAME_SAMPLES]
+            audio_buffer = audio_buffer[VAD_FRAME_SAMPLES:]
+            
+            # Process through VAD with barge-in
+            result = vad.process_frame(chunk)
+            
+            # Handle barge-in
+            if result['should_barge_in'] and ai_speaking_event.is_set():
+                print("🚨 BARGE-IN DETECTED - Interrupting")
+                ai_speaking_event.clear()
                 user_speaking_event.set()
-                speech_buffer = np.concatenate([speech_buffer, chunk])
-                silence_frames = 0
-
-            # =========================
-            # SILENCE
-            # =========================
-            else:
-                silence_frames += 1
-
-            # =========================
-            # END OF UTTERANCE
-            # =========================
-            if silence_frames >= 15:
-                user_speaking_event.clear()
-
-                if len(speech_buffer) >= int(SAMPLE_RATE * 0.6):
-                    clean_audio = preprocess_audio(
-                        speech_buffer,
-                        SAMPLE_RATE
-                    )
-
+                
+                # Flush TTS queue
+                while not out_queue.empty():
+                    try:
+                        out_queue.get_nowait()
+                    except:
+                        break
+            
+            # Update user speaking state
+            if result['is_speech'] and not ai_speaking_event.is_set():
+                user_speaking_event.set()
+            elif not result['is_speech'] and not ai_speaking_event.is_set():
+                # Only clear if we're sure they're done
+                if not result['utterance_complete']:
+                    pass  # Keep speaking state if utterance not complete
+                else:
+                    user_speaking_event.clear()
+            
+            # Handle complete utterance
+            if result['utterance_complete'] and result['utterance_audio'] is not None:
+                audio = result['utterance_audio']
+                
+                # Check minimum length
+                if len(audio) >= int(SAMPLE_RATE * config.min_utterance_ms / 1000):
+                    # Preprocess audio
+                    clean_audio = preprocess_audio(audio, SAMPLE_RATE)
+                    
+                    # Transcribe
                     segments, _ = whisper_model.transcribe(
                         clean_audio,
                         beam_size=3,
-                        vad_filter=False   # Silero already did VAD
+                        vad_filter=False
                     )
-
+                    
                     for seg in segments:
                         text = seg.text.strip()
                         if text:
+                            # Check if it's just a backchannel
+                            if vad.is_backchannel(text):
+                                print(f"📣 Backchannel ignored: '{text}'")
+                                continue
+                            
+                            print(f"🗣️ User: {text}")
                             text_queue.put(text)
-
-                speech_buffer = np.zeros(0, dtype=np.float32)
-                silence_frames = 0
+                else:
+                    print(f"⏱️ Utterance too short ({len(audio)/SAMPLE_RATE:.2f}s), ignoring")

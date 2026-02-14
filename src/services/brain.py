@@ -12,8 +12,7 @@ client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
 
-# Model selection - you can change this as needed
-MODEL = "llama-3.3-70b-versatile"  # or "mixtral-8x7b-32768", "gemma2-9b-it", etc.
+MODEL = "llama-3.3-70b-versatile"
 
 def clean_llm_output(text: str) -> str:
     # Remove markdown emphasis (*italic*, **bold**)
@@ -104,8 +103,6 @@ def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, trans
                     
                     assistant_response += output
                     sentence_buffer += output
-                    
-                    # Send complete sentences to TTS
                     if re.search(r'[.!?](?:\s|$)', sentence_buffer):
                         out_queue.put(sentence_buffer.strip())
                         sentence_buffer = ""
