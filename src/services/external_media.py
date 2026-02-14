@@ -88,7 +88,7 @@ def stream_to_whisper(
     process = (
         ffmpeg
         .input(
-            "pcmu.sdp",
+            "../utils/pcmu.sdp",
             protocol_whitelist="file,udp,rtp",
             fflags="nobuffer",
             flags="low_delay",

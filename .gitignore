@@ -1,7 +1,6 @@
 venv/
 .env
-src/services/Server1/__pycache__
-src/services/Server1/en_US-ryan-high.onnx
-src/services/Server1/en_US-ryan-high.onnx.json
-src/services/Server1/en_US-ryan-low.onnx
-src/services/Server1/en_US-ryan-low.onnx.json
+src/services/__pycache__
+src/piper-models/en_US-ryan-high.onnx
+src/piper-models/en_US-ryan-high.onnx.json
+src/piper-models/en_US-ryan-low.onnx

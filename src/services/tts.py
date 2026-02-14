@@ -5,7 +5,7 @@ import time
 from multiprocessing import Queue
 
 PIPER_BINARY = "piper"
-MODEL_PATH = "en_US-ryan-low.onnx"
+MODEL_PATH = "../piper-models/en_US-ryan-low.onnx"
 TTS_PORT = 9998
 
 def create_rtp_packet(seq, ts, ssrc, payload):
