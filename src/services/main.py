@@ -9,6 +9,7 @@ if __name__ == "__main__":
 
     text_queue = Queue()
     out_queue = Queue()
+    transcript_queue = Queue()
     text_queue.put("Hello")
 
     #shared events
@@ -17,7 +18,7 @@ if __name__ == "__main__":
 
     threading.Thread(
         target=run_llm,
-        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event),
+        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event,transcript_queue),
         daemon=True
     ).start()
 
@@ -29,6 +30,7 @@ if __name__ == "__main__":
 
     p_events = Process(
         target=run_events,
+        args=(transcript_queue,),
         name="EVENTS"
     )
 

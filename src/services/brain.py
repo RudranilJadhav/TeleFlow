@@ -77,12 +77,13 @@ chat = lmstudio.Chat(
 "Switch intelligently between modes."
 )
 
-def run_llm(text_queue,out_queue,user_speaking_event,ai_speaking_event):
+def run_llm(text_queue,out_queue,user_speaking_event,ai_speaking_event,transcript_queue):
     while True:
         text = text_queue.get()
         if text is None:
             break
         print("\nUser:", text)
+        transcript_queue.put(f"User: {text}")
         chat.add_user_message(text)
         ai_speaking_event.set()
         # print("Assistant: ", end="", flush=True)
@@ -121,5 +122,6 @@ def run_llm(text_queue,out_queue,user_speaking_event,ai_speaking_event):
         if sentence_buffer and not user_speaking_event.is_set():
             out_queue.put(sentence_buffer)
         chat.add_assistant_response(assistant_response)
+        transcript_queue.put(f"Agent: {assistant_response}")
         ai_speaking_event.clear()
         # print("\n")

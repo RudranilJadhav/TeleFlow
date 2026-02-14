@@ -1,8 +1,13 @@
+from multiprocessing import Queue
+import os
 import websocket
 import requests
 import json
 import threading
 import time
+from mom_generator import generate_mom, generate_mom_document
+from datetime import datetime
+
 
 ARI_URL = "http://localhost:8088/ari"
 WS_URL = "ws://localhost:8088/ari/events"
@@ -93,28 +98,67 @@ def setup_call(channel_id):
                 }
             print(f"Active: {channel_id} | Main: {main_bridge_id} | ASR: {asr_bridge['id']}")
 
-def on_message(ws, message):
-    event = json.loads(message)
-    if event.get("type") == "StasisStart":
-        # Ignore specialized channels (Snoop, Recorder, UnicastRTP) to avoid infinite loops
-        c_name = event.get("channel", {}).get("name", "")
-        if c_name.startswith("UnicastRTP") or c_name.startswith("Snoop"): 
-            return
-        
-        # Spawn thread for non-blocking processing
-        threading.Thread(target=setup_call, args=(event["channel"]["id"],)).start()
-
-    elif event.get("type") == "StasisEnd":
-        cid = event.get("channel", {}).get("id")
-        with calls_lock:
-            data = calls.pop(cid, None)
-            if data:
-                # Cleanup both bridges
-                ari_request('DELETE', f"bridges/{data['main_bridge']}")
-                ari_request('DELETE', f"bridges/{data['asr_bridge']}")
-                print(f"Ended: {cid}")
                 
-def run():
+def run(transcript_queue: Queue):
+    # Shared state for conversation tracking
+    conversation = []
+    call_active = False
+    lock = threading.Lock()
+
+    # Thread to listen for transcript lines
+    def queue_listener():
+        nonlocal conversation, call_active
+        while True:
+            line = transcript_queue.get()
+            with lock:
+                if call_active:
+                    conversation.append(line)
+
+    threading.Thread(target=queue_listener, daemon=True).start()
+
+    def on_message(ws, message):
+        nonlocal conversation, call_active
+        event = json.loads(message)
+        if event.get("type") == "StasisStart":
+            # Ignore specialized channels
+            c_name = event.get("channel", {}).get("name", "")
+            if c_name.startswith("UnicastRTP") or c_name.startswith("Snoop"):
+                return
+
+            # Reset conversation for new call
+            with lock:
+                call_active = True
+                conversation.clear()
+
+            threading.Thread(target=setup_call, args=(event["channel"]["id"],)).start()
+
+        elif event.get("type") == "StasisEnd":
+            cid = event.get("channel", {}).get("id")
+            with calls_lock:
+                data = calls.pop(cid, None)
+                if data:
+                    ari_request('DELETE', f"bridges/{data['main_bridge']}")
+                    ari_request('DELETE', f"bridges/{data['asr_bridge']}")
+                    print(f"Ended: {cid}")
+
+            # Generate MoM if we have conversation
+            with lock:
+                if call_active and conversation:
+                    chat_history = "\n".join(conversation)
+                    mom = generate_mom(chat_history)
+                    doc = generate_mom_document(mom)
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    
+                    # Define log directory and ensure it exists
+                    log_dir = "../../call-logs"
+                    os.makedirs(log_dir, exist_ok=True)
+                    
+                    filename = os.path.join(log_dir, f"mom_{cid}_{timestamp}.txt")
+                    with open(filename, "w") as f:
+                        f.write(doc)
+                    print(f"\n=== MoM saved to {filename} ===\n")
+                call_active = False
+
     ws_url = f"{WS_URL}?api_key={USER}:{PASSWORD}&app={APP_NAME}"
     ws = websocket.WebSocketApp(ws_url, on_message=on_message)
     ws.run_forever()
