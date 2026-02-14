@@ -40,19 +40,23 @@ def clean_llm_output(text: str) -> str:
     return text
 
 # Load system prompt
-with open("../utils/prompt.txt", "r") as f:
-    system_prompt = f.read()
 
-print(f"Loaded system prompt, using Groq model: {MODEL}")
 
 # Initialize message history
-messages = [
-    {"role": "system", "content": system_prompt}
-]
 
-def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue):
+def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue,type):
     global messages
-    
+    if type=="Outbound":
+        with open("../utils/outboundprompt.txt", "r") as f:
+            system_prompt = f.read()
+    if type=="Inbound":
+        with open("../utils/prompt.txt", "r") as f:
+            system_prompt = f.read()
+
+    messages = [
+    {"role": "system", "content": system_prompt}
+    ]
+    print(f"Loaded system prompt, using Groq model: {MODEL}")
     while True:
         text = text_queue.get()
         if text is None:

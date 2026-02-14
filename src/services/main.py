@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     threading.Thread(
         target=run_llm,
-        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event,transcript_queue),
+        args=(text_queue,out_queue,user_speaking_event,ai_speaking_event,transcript_queue,"Inbound"),
         daemon=True
     ).start()
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     p_events = Process(
         target=run_events,
-        args=(transcript_queue,),
+        args=(transcript_queue,text_queue),
         name="EVENTS"
     )
 
