@@ -6,7 +6,7 @@ import json
 import threading
 from mom_generator import generate_mom, generate_mom_document
 from datetime import datetime
-
+LIVE_TRANSCRIPT_FILE = "../../call-logs/live_transcript.txt"
 
 ARI_URL = "http://localhost:8088/ari"
 WS_URL = "ws://localhost:8088/ari/events"
@@ -110,6 +110,8 @@ def run(transcript_queue: Queue,text_queue: Queue):
             with lock:
                 if call_active:
                     conversation.append(line)
+                    with open(LIVE_TRANSCRIPT_FILE, "a", encoding="utf-8") as f:
+                        f.write(line + "\n")
 
     threading.Thread(target=queue_listener, daemon=True).start()
 
@@ -147,10 +149,11 @@ def run(transcript_queue: Queue,text_queue: Queue):
                     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                     log_dir = "../../call-logs"
                     os.makedirs(log_dir, exist_ok=True)
-                    filename = os.path.join(log_dir, f"mom_{cid}_{timestamp}.txt")
+                    filename = os.path.join(log_dir, f"mom_{mom['customer_name']}_{cid}_{timestamp}.txt")
                     with open(filename, "w") as f:
                         f.write(doc)
                     print(f"\n=== MoM saved to {filename} ===\n")
+                    open(LIVE_TRANSCRIPT_FILE, "w").close()
                 call_active = False
 
     ws_url = f"{WS_URL}?api_key={USER}:{PASSWORD}&app={APP_NAME}"
