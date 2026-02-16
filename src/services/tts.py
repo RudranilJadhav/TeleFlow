@@ -3,7 +3,7 @@ import struct
 import subprocess
 import time
 from multiprocessing import Queue
-import threading
+
 
 PIPER_BINARY = "piper"
 MODEL_PATH = "../piper-models/en_US-ryan-low.onnx"

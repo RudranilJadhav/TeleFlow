@@ -4,7 +4,6 @@ import websocket
 import requests
 import json
 import threading
-import time
 from mom_generator import generate_mom, generate_mom_document
 from datetime import datetime
 

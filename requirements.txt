@@ -8,3 +8,5 @@ piper-tts
 piper
 groq
 python-dotenv
+noisereduce
+torch
