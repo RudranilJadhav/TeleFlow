@@ -10,3 +10,4 @@ groq
 python-dotenv
 noisereduce
 torch
+stremlit

@@ -96,7 +96,7 @@ def setup_call(channel_id):
             print(f"Active: {channel_id} | Main: {main_bridge_id} | ASR: {asr_bridge['id']}")
 
                 
-def run(transcript_queue: Queue):
+def run(transcript_queue: Queue,text_queue: Queue):
     # Shared state for conversation tracking
     conversation = []
     call_active = False

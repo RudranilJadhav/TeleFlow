@@ -46,22 +46,20 @@ def stream_to_whisper(
     ai_speaking_event
 ):
     # Configure barge-in detection
-    config = BargeInConfig(
-        vad_threshold=0.3,               
-        speech_threshold=0.4,       
-        min_energy=1e-4,         
-        max_energy=0.5,           
-        min_speech_for_bargein=200,  
-        min_utterance_ms=400,         
-        silence_timeout_ms=400,           
-        barge_in_cooldown_ms=800,
-        hangover_ms=200,                   
-        vad_smoothing_window=3,            
-        noise_floor_alpha=0.995               
-    )
-    
+    config = BargeInConfig()
+    config.vad_threshold = 0.3
+    config.speech_threshold = 0.4
+    config.min_speech_for_bargein = 200
+    config.min_utterance_ms = 250
+    config.silence_timeout_ms = 500
+    config.barge_in_cooldown_ms = 800
+    config.hangover_ms = 200
+    config.vad_smoothing_window = 3
+    config.noise_floor_alpha = 0.995
+
     # Create VAD with barge-in
     vad = VADWithBargeIn(config)
+
     
     # Load Whisper model
     whisper_model = WhisperModel(
