@@ -3,73 +3,61 @@ import torch
 from silero_vad import load_silero_vad
 from collections import deque
 import time
-from dataclasses import dataclass
 from typing import Optional
 
-@dataclass
-class BargeInConfig:
-    """Configuration for barge-in detection – tuned for sensitivity."""
-    # VAD thresholds – low to catch quiet speech
-    vad_threshold: float = 0.3          # Silero probability threshold for speech
-    speech_threshold: float = 0.4       # For smoothed probability
+class BargeInConfig: 
 
-    # Energy thresholds – only to filter out pure silence or clipping
-    min_energy: float = 1e-4            # Below this is considered silence
-    max_energy: float = 0.5              # Above this is likely clipping/artefact
+    def __init__(self):
+        # VAD thresholds – low to catch quiet speech
+        self.vad_threshold = 0.3          
+        self.speech_threshold = 0.4       
 
-    # Timing parameters (ms)
-    min_speech_for_bargein: int = 200    # Min sustained speech before barge-in
-    min_utterance_ms: int = 250           # Min length to transcribe
-    silence_timeout_ms: int = 500         # Silence to mark utterance end
-    barge_in_cooldown_ms: int = 800       # Cooldown after barge-in
-    hangover_ms: int = 200                 # Keep speech active after VAD drop
+        # Energy thresholds – only to filter out pure silence or clipping
+        self.min_energy = 1e-4            
+        self.max_energy = 0.5              
 
-    # Smoothing
-    vad_smoothing_window: int = 3          # Moving average frames
+        # Timing parameters (ms)
+        self.min_speech_for_bargein = 200    
+        self.min_utterance_ms = 250           
+        self.silence_timeout_ms = 500         
+        self.barge_in_cooldown_ms = 800       
+        self.hangover_ms = 200                 
 
-    # Adaptive noise floor (used only to ignore constant background)
-    noise_floor_alpha: float = 0.995       # Smoothing for noise floor update
+        # Smoothing
+        self.vad_smoothing_window = 3          
 
-    # Backchannel words
-    backchannel_words = {
-        "yes", "yeah", "yep", "ok", "okay", "uh", "um", "ah", "hmm",
-        "mm", "mhm", "uhh", "right", "sure", "no", "nope", "hey",
-        "hi", "hello", "thanks", "thank you", "good", "great"
-    }
+        # Adaptive noise floor 
+        self.noise_floor_alpha = 0.995       
 
+        # Backchannel words
+        self.backchannel_words = {
+            "yes", "yeah", "yep", "ok", "okay", "uh", "um", "ah", "hmm",
+            "mm", "mhm", "uhh", "right", "sure", "no", "nope", "hey",
+            "hi", "hello", "thanks", "thank you", "good", "great"
+        }
 
 class VADWithBargeIn:
-    """
-    Sensitive VAD with barge-in detection.
-    - Low thresholds to catch speech.
-    - Uses smoothing and hangover to avoid chopping.
-    - Barge-in triggered only after sustained speech.
-    - Adaptive noise floor to ignore constant background, not suppress voice.
-    """
 
     def __init__(self, config: Optional[BargeInConfig] = None, sample_rate: int = 16000):
-        self.config = config or BargeInConfig()
+        
+        self.config = config if config is not None else BargeInConfig()
+        
         self.sample_rate = sample_rate
+        
         self.vad_model = load_silero_vad().to("cpu").eval()
-
-        # Frame size: 32ms (512 samples at 16kHz)
         self.vad_frame_ms = 32
         self.vad_samples = int(sample_rate * self.vad_frame_ms / 1000)
-
-        # Convert ms to frames
+        
         self.min_speech_frames = max(1, self.config.min_speech_for_bargein // self.vad_frame_ms)
         self.silence_timeout_frames = self.config.silence_timeout_ms // self.vad_frame_ms
         self.barge_in_cooldown_frames = self.config.barge_in_cooldown_ms // self.vad_frame_ms
         self.hangover_frames = self.config.hangover_ms // self.vad_frame_ms
-
-        # Smoothing buffer
+        
         self.vad_buffer = deque(maxlen=self.config.vad_smoothing_window)
 
-        # Adaptive noise floor – tracks background RMS
         self.noise_floor = 1e-4
         self.noise_floor_alpha = self.config.noise_floor_alpha
 
-        # State variables
         self.vad_history = deque(maxlen=self.min_speech_frames * 2)
         self.energy_history = deque(maxlen=self.min_speech_frames * 2)
 
@@ -80,22 +68,18 @@ class VADWithBargeIn:
         self.last_barge_in_time = 0
 
         self.utterance_buffer = np.array([], dtype=np.float32)
-        self.is_speaking = False          # Whether we are currently in a speech segment
+        self.is_speaking = False 
 
     def process_frame(self, audio_chunk: np.ndarray) -> dict:
-        """
-        Process a 32ms audio frame.
-        Returns dict with detection results.
-        """
         result = {
             'vad_prob': 0.0,
-            'is_speech': False,           # Smoothed VAD decision
+            'is_speech': False,         
             'should_barge_in': False,
             'utterance_complete': False,
             'utterance_audio': None,
         }
 
-        # Ensure chunk is 32ms (pad/truncate)
+        # Ensure chunk is 32ms
         if len(audio_chunk) != self.vad_samples:
             if len(audio_chunk) < self.vad_samples:
                 audio_chunk = np.pad(audio_chunk, (0, self.vad_samples - len(audio_chunk)))
@@ -122,10 +106,8 @@ class VADWithBargeIn:
             self.noise_floor = self.noise_floor_alpha * self.noise_floor + (1 - self.noise_floor_alpha) * rms
 
         # Determine if this frame contains speech
-        # Conditions: smoothed prob above threshold, RMS above noise floor (to avoid pure silence),
-        # and RMS below max energy (to ignore clipping). Use a relative factor for noise floor.
         is_speech_frame = (smoothed_prob > self.config.speech_threshold and
-                           rms > self.noise_floor * 2.0 and   # Must be significantly above noise floor
+                           rms > self.noise_floor * 2.0 and   
                            rms < self.config.max_energy)
 
         result['is_speech'] = is_speech_frame
@@ -153,7 +135,7 @@ class VADWithBargeIn:
                 self.cooldown_frames == 0 and
                 self.speech_frames >= self.min_speech_frames):
 
-                # Additional check: recent energy variation (optional, but can help)
+                # Additional check: recent energy variation
                 if self._is_likely_speech():
                     result['should_barge_in'] = True
                     self.is_speaking = True
@@ -187,7 +169,7 @@ class VADWithBargeIn:
         return result
 
     def _is_likely_speech(self) -> bool:
-        """Check if recent frames indicate real speech (not noise)."""
+
         if len(self.energy_history) < self.min_speech_frames:
             return True   # Not enough history, assume speech
 
@@ -202,7 +184,7 @@ class VADWithBargeIn:
         return True
 
     def is_backchannel(self, text: str) -> bool:
-        """Check if transcribed text is just a backchannel word/phrase."""
+        
         if not text:
             return True
         text = text.lower().strip()
@@ -216,7 +198,7 @@ class VADWithBargeIn:
         return False
 
     def reset(self):
-        """Reset all internal state."""
+        
         self.vad_buffer.clear()
         self.vad_history.clear()
         self.energy_history.clear()
@@ -227,7 +209,6 @@ class VADWithBargeIn:
         self.utterance_buffer = np.array([], dtype=np.float32)
         self.is_speaking = False
         self.noise_floor = 1e-4
-
 
 def create_vad_with_bargein(sample_rate=16000):
     return VADWithBargeIn(sample_rate=sample_rate)

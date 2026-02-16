@@ -12,7 +12,6 @@ if __name__ == "__main__":
     transcript_queue = Queue()
     text_queue.put("Hello")
 
-    #shared events
     user_speaking_event = Event()
     ai_speaking_event = Event()
 

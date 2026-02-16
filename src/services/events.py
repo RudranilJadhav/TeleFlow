@@ -33,15 +33,15 @@ def ari_request(method, endpoint, data=None):
         r.raise_for_status()
         return r.json() if r.text and r.status_code != 204 else {}
     except Exception as e:
-        # Simple retry logic could be added here, but the Semaphore usually fixes it.
+       
         print(f"ARI Error [{endpoint}]: {e}")
         return None
 
 def setup_call(channel_id):
-    # Acquire lock. If 5 calls are setting up, this thread waits here.
+
     with setup_semaphore:
         print(f"Processing: {channel_id}")
-        
+
         # 1. Answer and create Main Bridge (Caller + TTS)
         ari_request('POST', f"channels/{channel_id}/answer")
         main_bridge = ari_request('POST', "bridges", {"type": "mixing"})
@@ -53,8 +53,7 @@ def setup_call(channel_id):
         main_bridge_id = main_bridge["id"]
         ari_request('POST', f"bridges/{main_bridge_id}/addChannel", {"channel": channel_id})
 
-        # 2. Add TTS (Static Port 9998)
-        # Direction RECV: We receive audio FROM 9998
+        # 2. Add TTS on Port 9998
         tts_ch = ari_request('POST', "channels/externalMedia", {
             "app": APP_NAME, 
             "external_host": "127.0.0.1:9998", 
@@ -65,7 +64,7 @@ def setup_call(channel_id):
         if tts_ch:
             ari_request('POST', f"bridges/{main_bridge_id}/addChannel", {"channel": tts_ch["id"]})
 
-        # 3. Create Snoop Channel (The Echo Fix)
+        # 3. Create Snoop Channel
         # spy='in': Listen ONLY to the user, not the TTS
         snoop_ch = ari_request('POST', f"channels/{channel_id}/snoop", {
             "app": APP_NAME,
@@ -76,8 +75,7 @@ def setup_call(channel_id):
              print(f"Snoop failed for {channel_id}")
              return
 
-        # 4. Add ASR (Static Port 9999)
-        # Direction SEND: We send audio TO 9999
+        # 4. Add ASR on Port 9999
         asr_ch = ari_request('POST', "channels/externalMedia", {
             "app": APP_NAME, 
             "external_host": "127.0.0.1:9999", 
@@ -148,11 +146,8 @@ def run(transcript_queue: Queue):
                     mom = generate_mom(chat_history)
                     doc = generate_mom_document(mom)
                     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    
-                    # Define log directory and ensure it exists
                     log_dir = "../../call-logs"
                     os.makedirs(log_dir, exist_ok=True)
-                    
                     filename = os.path.join(log_dir, f"mom_{cid}_{timestamp}.txt")
                     with open(filename, "w") as f:
                         f.write(doc)

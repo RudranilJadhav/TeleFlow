@@ -12,32 +12,8 @@ client = Groq(
 )
 
 MODEL = "llama-3.3-70b-versatile"
-SYSTEM_PROMPT = """
-You are a Real Estate Sales Call Analyzer.
-
-Generate a structured Minutes of Meeting (MoM).
-
-Return ONLY valid JSON in the exact schema below:
-
-{
-  "customer_name": string | null,
-  "city": string | null,
-  "configuration": string | null,
-  "budget_range": string | null,
-  "timeline": string | null,
-  "customer_intent": string | null,
-  "lead_quality": "Hot" | "Warm" | "Cold",
-  "other_notes": string | null,
-  "next_action": string | null,
-  "sales_stage": "Qualification" | "Recommendation" | "Objection Handling" | "Closing"
-}
-
-Rules:
-- Do NOT hallucinate.
-- If information missing, use null.
-- No markdown.
-- Only JSON.
-"""
+with open("../utils/momgeneratorprompt.txt", "r") as f:
+            SYSTEM_PROMPT = f.read()
 
 def generate_mom(chat_history: str) -> Dict[str, Any]:
     try:
@@ -53,7 +29,6 @@ def generate_mom(chat_history: str) -> Dict[str, Any]:
 
         raw = response.choices[0].message.content.strip()
 
-        # Hard JSON isolation
         json_start = raw.find("{")
         json_end = raw.rfind("}") + 1
         cleaned = raw[json_start:json_end]

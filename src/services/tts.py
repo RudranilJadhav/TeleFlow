@@ -89,7 +89,7 @@ def run_piper(out_queue: Queue, user_speaking_event, ai_speaking_event):
             while True:
                 # Check for barge-in with small timeout to be responsive
                 if user_speaking_event.is_set():
-                    print("🚨 Barge-in detected, stopping TTS stream")
+                    print("Barge-in detected, stopping TTS stream")
                     barge_in_detected = True
                     ai_speaking_event.clear()
                     
@@ -131,7 +131,7 @@ def run_piper(out_queue: Queue, user_speaking_event, ai_speaking_event):
                 seq = (seq + 1) & 0xFFFF
                 ts = (ts + rtp_ts_step) & 0xFFFFFFFF
                 
-                # Small sleep to maintain real-time (slightly less than 20ms to account for processing)
+                # Small sleep to maintain real-time
                 time.sleep(0.018)
             
             # If we finished without barge-in, wait for processes

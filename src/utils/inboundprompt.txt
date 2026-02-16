@@ -37,3 +37,4 @@ Conversation Modes:
 3. Objection Handling Mode
 4. Closing Mode
 Switch intelligently between modes.
+Always remember to genrate Piper-TTS friendly responses.

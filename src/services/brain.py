@@ -4,7 +4,6 @@ from groq import Groq
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 # Initialize Groq client
@@ -22,16 +21,16 @@ def clean_llm_output(text: str) -> str:
     # Remove emojis & symbols (Unicode ranges)
     emoji_pattern = re.compile(
         "["
-        "\U0001F600-\U0001F64F"  # emoticons
-        "\U0001F300-\U0001F5FF"  # symbols & pictographs
-        "\U0001F680-\U0001F6FF"  # transport & map
+        "\U0001F600-\U0001F64F"  
+        "\U0001F300-\U0001F5FF"  
+        "\U0001F680-\U0001F6FF"  
         "\U0001F700-\U0001F77F"
         "\U0001F780-\U0001F7FF"
         "\U0001F800-\U0001F8FF"
         "\U0001F900-\U0001F9FF"
         "\U0001FA00-\U0001FAFF"
-        "\U00002700-\U000027BF"  # dingbats
-        "\U00002600-\U000026FF"  # misc symbols
+        "\U00002700-\U000027BF" 
+        "\U00002600-\U000026FF"
         "]+",
         flags=re.UNICODE
     )
@@ -39,18 +38,16 @@ def clean_llm_output(text: str) -> str:
     text = emoji_pattern.sub("", text)
     return text
 
-# Load system prompt
-
-
-# Initialize message history
 
 def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue,type):
+    
     global messages
+
     if type=="Outbound":
         with open("../utils/outboundprompt.txt", "r") as f:
             system_prompt = f.read()
     if type=="Inbound":
-        with open("../utils/prompt.txt", "r") as f:
+        with open("../utils/inboundprompt.txt", "r") as f:
             system_prompt = f.read()
 
     messages = [
@@ -78,10 +75,9 @@ def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, trans
                 model=MODEL,
                 messages=messages,
                 temperature=0.5,
-                max_tokens=100,  # Slightly higher than before for complete sentences
+                max_tokens=100,
                 top_p=0.85,
                 stream=True,
-                stop=["\nUser:", "*"]  # Stop sequences
             )
             
             # Process stream chunks
@@ -130,7 +126,6 @@ def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, trans
         
         ai_speaking_event.clear()
         
-        # Keep message history manageable (prevent token limit issues)
-        if len(messages) > 20:  # Adjust based on your needs
-            # Keep system message and last 19 exchanges
+        # Keep message history manageable to prevent token limit issues
+        if len(messages) > 20:
             messages = [messages[0]] + messages[-19:]

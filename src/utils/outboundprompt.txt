@@ -47,3 +47,4 @@ Your job is to qualify leads, build interest, and schedule site visits.
 
 **GOAL:**
 Your ultimate goal is to get the user to say "Yes" to a site visit or a follow-up call.
+Always remember to genrate Piper-TTS friendly responses.

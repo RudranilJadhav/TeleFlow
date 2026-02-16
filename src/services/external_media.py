@@ -8,9 +8,6 @@ import noisereduce as nr
 import torch
 from vad_with_bargein import VADWithBargeIn, BargeInConfig
 
-# =========================
-# AUDIO DSP UTILITIES
-# =========================
 
 def bandpass(x, fs, low=300, high=3400, order=4):
     nyq = fs / 2
@@ -27,26 +24,21 @@ def reduce_noise(x, fs):
 
 def preprocess_audio(x, fs=16000):
     x = x.astype(np.float32)
-    x -= np.mean(x)  # DC removal
-    x = bandpass(x, fs)  # Speech band
+    x -= np.mean(x)
+    x = bandpass(x, fs)
     
     if len(x) > fs * 0.4:
         x = reduce_noise(x, fs)
     
     return x
 
-# =========================
 # FFMPEG STDERR LOGGER
-# =========================
-
 def read_ffmpeg_stderr(process):
     for line in iter(process.stderr.readline, b""):
         print("ffmpeg:", line.decode(errors="ignore").strip())
 
-# =========================
-# MAIN STREAM WITH VAD + BARGE-IN
-# =========================
 
+# VAD
 def stream_to_whisper(
     text_queue: Queue,
     out_queue: Queue,
@@ -55,17 +47,17 @@ def stream_to_whisper(
 ):
     # Configure barge-in detection
     config = BargeInConfig(
-        vad_threshold=0.3,               # More sensitive
-        speech_threshold=0.4,             # Smoothed speech threshold
-        min_energy=1e-4,                   # Below this is silence
-        max_energy=0.5,                    # Above this is clipping
-        min_speech_for_bargein=200,        # 200ms sustained speech to trigger barge-in
-        min_utterance_ms=400,               # Minimum length to transcribe
-        silence_timeout_ms=400,             # 400ms silence = end of utterance
-        barge_in_cooldown_ms=800,           # Cooldown after barge-in
-        hangover_ms=200,                     # Keep speech active after VAD drop
-        vad_smoothing_window=3,              # Smooth VAD over 3 frames
-        noise_floor_alpha=0.995               # Noise floor adaptation speed
+        vad_threshold=0.3,               
+        speech_threshold=0.4,       
+        min_energy=1e-4,         
+        max_energy=0.5,           
+        min_speech_for_bargein=200,  
+        min_utterance_ms=400,         
+        silence_timeout_ms=400,           
+        barge_in_cooldown_ms=800,
+        hangover_ms=200,                   
+        vad_smoothing_window=3,            
+        noise_floor_alpha=0.995               
     )
     
     # Create VAD with barge-in
@@ -178,10 +170,10 @@ def stream_to_whisper(
                         if text:
                             # Check if it's just a backchannel
                             if vad.is_backchannel(text):
-                                print(f"📣 Backchannel ignored: '{text}'")
+                                print(f"Backchannel ignored: '{text}'")
                                 continue
                             
-                            print(f"🗣️ User: {text}")
+                            print(f"User: {text}")
                             text_queue.put(text)
                 else:
-                    print(f"⏱️ Utterance too short ({len(audio)/SAMPLE_RATE:.2f}s), ignoring")
+                    print(f"Utterance too short ({len(audio)/SAMPLE_RATE:.2f}s), ignoring")

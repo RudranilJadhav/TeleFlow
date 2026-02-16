@@ -4,44 +4,36 @@ import json
 import requests
 import websocket
 from multiprocessing import Process, Queue, Event
-import os
 
-# Import capabilities from your existing files
+
 from brain import run_llm
 from external_media import stream_to_whisper
 from tts import run_piper
-# We import specific functions/vars from events to reuse the setup logic
-from events import setup_call, calls, calls_lock, ari_request, APP_NAME, WS_URL, USER, PASSWORD, setup_semaphore
+from events import setup_call, calls, calls_lock, ari_request, APP_NAME, WS_URL, USER, PASSWORD
 
-# --- Configuration ---
-TARGET_NUMBER = "PJSIP/6001"  # The Zoiper user to call
-BOT_CALLER_ID = "Stark Bot <8888>"
+
+TARGET_NUMBER = "PJSIP/6001"
+BOT_CALLER_ID = "Jarvis <8888>"
 
 def initiate_outbound_call(target_endpoint, caller_id):
-    """Triggers the call via ARI"""
     url = f"http://localhost:8088/ari/channels"
     params = {
         "endpoint": target_endpoint,
         "extension": "1000",
         "context": "default",
         "priority": 1,
-        "app": APP_NAME,        # Must match the app name in the websocket listener below
+        "app": APP_NAME,
         "appArgs": "outbound",
         "callerId": caller_id,
         "timeout": 30
     }
     try:
-        print(f"📞 Dialing {target_endpoint}...")
+        print(f"Dialing {target_endpoint}...")
         requests.post(url, auth=(USER, PASSWORD), json=params)
     except Exception as e:
         print(f"Error triggering call: {e}")
 
-def outbound_event_listener(transcript_queue, text_queue):
-    """
-    A custom event listener specifically for this outbound script.
-    It reuses 'setup_call' from events.py but adds the 'Hello' trigger.
-    """
-    conversation = []
+def outbound_event_listener(text_queue,transcript_queue):
     call_active = False
     lock = threading.Lock()
 
@@ -58,20 +50,18 @@ def outbound_event_listener(transcript_queue, text_queue):
             if c_name.startswith("UnicastRTP") or c_name.startswith("Snoop"):
                 return
 
-            print(f"🚀 Call Connected: {channel_id}")
+            print(f"Call Connected: {channel_id}")
             
             with lock:
                 call_active = True
             
             # A. Run the standard setup (Bridge, ASR, TTS)
-            # We run this in a thread to not block the websocket
             def setup_and_greet():
                 # Reuse the existing setup logic from events.py
                 setup_call(channel_id)
                 
-                # B. THE MAGIC FIX: Manually trigger the bot
-                print("🤖 Triggering Artificial Greeting...")
-                time.sleep(1) # Small buffer to ensure audio path is ready
+                print("Triggering Artificial Greeting...")
+                time.sleep(1) # Small buffer to ensure everything is ready
                 text_queue.put("Hello") 
 
             threading.Thread(target=setup_and_greet).start()
@@ -88,32 +78,28 @@ def outbound_event_listener(transcript_queue, text_queue):
                     ari_request('DELETE', f"bridges/{data['main_bridge']}")
                     ari_request('DELETE', f"bridges/{data['asr_bridge']}")
             
-            # (Optional) You can add the MoM generation logic here if you want it
-            if call_active:
-                print("Call ended. Shutting down script in 3 seconds...")
-                # We stop the script shortly after the call ends
-                threading.Timer(3.0, ws.close).start()
+            with lock:
+                call_active = False
+            print("Call ended. Shutting down script in 3 seconds...")
+            threading.Timer(3.0, ws.close).start()
 
     # Connect to Asterisk
     ws_url = f"{WS_URL}?api_key={USER}:{PASSWORD}&app={APP_NAME}"
     ws = websocket.WebSocketApp(ws_url, on_message=on_message)
-    print("⚡ Listening for Stasis Events...")
+    print("Listening for Stasis Events...")
     ws.run_forever()
 
 if __name__ == "__main__":
-    print("--- STARTING INDEPENDENT OUTBOUND AGENT ---")
+    print("--- STARTING OUTBOUND CALL---")
     
-    # 1. Initialize Queues
     text_queue = Queue()
     out_queue = Queue()
     transcript_queue = Queue()
     text_queue.put("Hello")
     
-    # 2. Shared Events
     user_speaking_event = Event()
     ai_speaking_event = Event()
 
-    # 3. Start AI Processes (Same as main.py)
     p_llm = threading.Thread(
         target=run_llm,
         args=(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue,"Outbound"),
@@ -136,19 +122,15 @@ if __name__ == "__main__":
     p_asr.start()
     p_piper.start()
 
-    # 4. Start the Event Listener (In a separate process or thread)
-    # We run it as a Process to keep it clean, but Thread is easier for 'initiate_call' timing
     t_events = threading.Thread(
         target=outbound_event_listener,
-        args=(transcript_queue, text_queue)
+        args=(text_queue,)
     )
     t_events.start()
 
-    # 5. Wait a moment for everything to spin up, then Dial
     time.sleep(2)
     initiate_outbound_call(TARGET_NUMBER, BOT_CALLER_ID)
 
-    # 6. Keep main thread alive until events thread finishes (when call ends)
     try:
         t_events.join()
         p_asr.join()
