@@ -13,32 +13,6 @@ client = Groq(
 
 MODEL = "llama-3.3-70b-versatile"
 
-# def clean_llm_output(text: str) -> str:
-#     # Remove markdown emphasis (*italic*, **bold**)
-#     text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
-#     text = re.sub(r'\*(.*?)\*', r'\1', text)
-
-#     # Remove emojis & symbols (Unicode ranges)
-#     emoji_pattern = re.compile(
-#         "["
-#         "\U0001F600-\U0001F64F"  
-#         "\U0001F300-\U0001F5FF"  
-#         "\U0001F680-\U0001F6FF"  
-#         "\U0001F700-\U0001F77F"
-#         "\U0001F780-\U0001F7FF"
-#         "\U0001F800-\U0001F8FF"
-#         "\U0001F900-\U0001F9FF"
-#         "\U0001FA00-\U0001FAFF"
-#         "\U00002700-\U000027BF" 
-#         "\U00002600-\U000026FF"
-#         "]+",
-#         flags=re.UNICODE
-#     )
-
-#     text = emoji_pattern.sub("", text)
-#     return text
-
-
 def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue,type):
     
     global messages

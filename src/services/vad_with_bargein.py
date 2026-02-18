@@ -9,6 +9,7 @@ class BargeInConfig:
 
     def __init__(self):
         # VAD thresholds – low to catch quiet speech
+        self.device = torch.device("cuda")
         self.vad_threshold = 0.3          
         self.speech_threshold = 0.4       
 
@@ -44,7 +45,15 @@ class VADWithBargeIn:
         
         self.sample_rate = sample_rate
         
-        self.vad_model = load_silero_vad().to("cuda").eval()
+        self.device = torch.device("cuda")
+
+        self.vad_model = load_silero_vad()
+        self.vad_model.to(self.device)
+        self.vad_model.eval()
+        for module in self.vad_model.modules():
+            if hasattr(module, "forward_basis_buffer"):
+                module.forward_basis_buffer = module.forward_basis_buffer.to(self.device)
+    
         self.vad_frame_ms = 32
         self.vad_samples = int(sample_rate * self.vad_frame_ms / 1000)
         
@@ -87,11 +96,13 @@ class VADWithBargeIn:
                 audio_chunk = audio_chunk[:self.vad_samples]
 
         # Get Silero VAD probability
-        with torch.no_grad():
-            prob = self.vad_model(
-                torch.from_numpy(audio_chunk),
-                self.sample_rate
-            ).item()
+        audio_tensor = (
+            torch.from_numpy(audio_chunk)
+            .float()
+            .to(self.device)
+        )
+
+        prob = self.vad_model(audio_tensor, self.sample_rate).item()
         result['vad_prob'] = prob
 
         # Smooth probability

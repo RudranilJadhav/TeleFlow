@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     t_events = threading.Thread(
         target=outbound_event_listener,
-        args=(text_queue,)
+        args=(text_queue,transcript_queue),
     )
     t_events.start()
 
