@@ -64,7 +64,7 @@ def stream_to_whisper(
     # Load Whisper model
     whisper_model = WhisperModel(
         "small.en",
-        device="cuda" if torch.cuda.is_available() else "cpu",
+        device="cuda",
         compute_type="int8"
     )
     

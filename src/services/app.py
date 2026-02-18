@@ -16,7 +16,7 @@ LIVE_TRANSCRIPT_FILE = "../../call-logs/live_transcript.txt"   # optional live f
 
 
 st.set_page_config(
-    page_title="Stark Real Estate – Voice AI",
+    page_title="Stark Real Estate - Voice AI",
     layout="wide"
 )
 

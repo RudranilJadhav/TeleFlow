@@ -44,7 +44,7 @@ class VADWithBargeIn:
         
         self.sample_rate = sample_rate
         
-        self.vad_model = load_silero_vad().to("cpu").eval()
+        self.vad_model = load_silero_vad().to("cuda").eval()
         self.vad_frame_ms = 32
         self.vad_samples = int(sample_rate * self.vad_frame_ms / 1000)
         

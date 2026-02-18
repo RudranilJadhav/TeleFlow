@@ -3,7 +3,6 @@ websocket-client
 silero-vad
 faster_whisper
 numpy
-lmstudio
 piper-tts
 piper
 groq
@@ -11,3 +10,4 @@ python-dotenv
 noisereduce
 torch
 stremlit
+streamlit_autorefresh
