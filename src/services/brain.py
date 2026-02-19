@@ -12,6 +12,7 @@ client = Groq(
 )
 
 MODEL = "llama-3.3-70b-versatile"
+# MODEL="meta-llama/llama-guard-4-12b"
 
 def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, transcript_queue,type):
     
@@ -100,5 +101,5 @@ def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, trans
         ai_speaking_event.clear()
         
         # Keep message history manageable to prevent token limit issues
-        if len(messages) > 20:
-            messages = [messages[0]] + messages[-19:]
+        if len(messages) > 50:
+            messages = [messages[0]] + messages[-49:]

@@ -54,69 +54,79 @@ def generate_mom(chat_history: str) -> Dict[str, Any]:
 def generate_mom_document(mom: Dict[str, Any]) -> str:
     today = datetime.now().strftime("%d %B %Y")
 
+    def bullet(text):
+        return f"• {text}"
+
+    # --- Key Discussion Points (only qualitative insights) ---
     key_points = []
 
-    if mom.get("city"):
-        key_points.append(f"Customer expressed interest in properties in {mom['city']}")
-
-    if mom.get("configuration"):
-        key_points.append(f"Preferred configuration: {mom['configuration']}")
-
-    if mom.get("budget_range"):
-        key_points.append(f"Budget discussed: {mom['budget_range']}")
-
-    if mom.get("timeline"):
-        key_points.append(f"Purchase timeline: {mom['timeline']}")
-
     if mom.get("customer_intent"):
-        key_points.append(f"Customer intent: {mom['customer_intent']}")
+        key_points.append(mom["customer_intent"])
 
     if mom.get("other_notes"):
-        key_points.append(f"Other Notes: {mom['other_notes']}")
+        key_points.append(mom["other_notes"])
 
     key_points_text = (
-        "\n".join([f"• {p}" for p in key_points])
-        if key_points else "• No major discussion points recorded."
+        "\n".join(bullet(p) for p in key_points)
+        if key_points
+        else bullet("No significant discussion points captured.")
     )
+
+    # --- Customer Requirements (pure facts, no commentary) ---
+    requirements = []
+
+    if mom.get("city"):
+        requirements.append(f"Location: {mom['city']}")
+
+    if mom.get("configuration"):
+        requirements.append(f"Configuration: {mom['configuration']}")
+
+    if mom.get("budget_range"):
+        requirements.append(f"Budget Range: {mom['budget_range']}")
+
+    if mom.get("timeline"):
+        requirements.append(f"Timeline: {mom['timeline']}")
 
     requirements_text = (
-        f"• Location: {mom.get('city')}\n"
-        f"• Configuration: {mom.get('configuration')}\n"
-        f"• Budget: {mom.get('budget_range')}\n"
-        f"• Timeline: {mom.get('timeline')}"
+        "\n".join(bullet(r) for r in requirements)
+        if requirements
+        else bullet("No explicit requirements identified.")
     )
 
+    # --- Action Items (deterministic + LLM suggested) ---
     action_items = []
 
     lead_quality = mom.get("lead_quality", "Cold")
 
-    if lead_quality == "Hot":
-        action_items.append("Schedule site visit immediately.")
-    elif lead_quality == "Warm":
-        action_items.append("Share shortlisted property options.")
-    else:
-        action_items.append("Plan follow-up to assess interest.")
+    default_actions = {
+        "Hot": "Schedule site visit or booking discussion.",
+        "Warm": "Share relevant property options and follow up.",
+        "Cold": "Re-engage later to reassess interest."
+    }
+
+    action_items.append(default_actions.get(lead_quality, default_actions["Cold"]))
 
     if mom.get("next_action"):
         action_items.append(mom["next_action"])
 
-    action_items_text = "\n".join([f"• {a}" for a in action_items])
+    action_items_text = "\n".join(bullet(a) for a in action_items)
 
+    # --- Final Document ---
     return f"""
 STARK REAL ESTATE
 Minutes of Meeting (MoM)
 Date: {today}
 
-Customer Name: {mom.get('customer_name')}
+Customer Name: {mom.get('customer_name') or 'Not Captured'}
 Lead Quality: {lead_quality}
 Sales Stage: {mom.get('sales_stage')}
 
-1. Key Discussion Points
+1. Key Discussion Summary
 {key_points_text}
 
-2. Customer Requirements Identified
+2. Customer Requirements
 {requirements_text}
 
-3. Action Items for Sales Team
+3. Action Items
 {action_items_text}
 """.strip()
