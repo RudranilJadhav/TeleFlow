@@ -33,7 +33,7 @@ def initiate_outbound_call(target_endpoint, caller_id):
     except Exception as e:
         print(f"Error triggering call: {e}")
 
-def outbound_event_listener(text_queue,transcript_queue):
+def outbound_event_listener(text_queue,):
     call_active = False
     lock = threading.Lock()
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     text_queue = Queue()
     out_queue = Queue()
     transcript_queue = Queue()
-    text_queue.put("Hello")
+    # text_queue.put("Hello")
     
     user_speaking_event = Event()
     ai_speaking_event = Event()
@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     t_events = threading.Thread(
         target=outbound_event_listener,
-        args=(text_queue,transcript_queue),
+        args=(text_queue,),
     )
     t_events.start()
 
