@@ -51,7 +51,7 @@ def stream_to_whisper(
     config.speech_threshold = 0.4
     config.min_speech_for_bargein = 200
     config.min_utterance_ms = 250
-    config.silence_timeout_ms = 500
+    config.silence_timeout_ms = 250
     config.barge_in_cooldown_ms = 800
     config.hangover_ms = 200
     config.vad_smoothing_window = 3
@@ -63,10 +63,10 @@ def stream_to_whisper(
     
     # Load Whisper model
     whisper_model = WhisperModel(
-        "small.en",
+        "tiny.en",
         device="cuda",
         compute_type="int8"
-    )
+    )   
     
     # Start FFmpeg RTP decoder
     process = (

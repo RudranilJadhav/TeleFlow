@@ -77,9 +77,9 @@ def run_llm(text_queue, out_queue, user_speaking_event, ai_speaking_event, trans
                     
                     assistant_response += output
                     sentence_buffer += output
-                    # if re.search(r'[.!?](?:\s|$)', sentence_buffer):
-                    #     out_queue.put(sentence_buffer.strip())
-                    #     sentence_buffer = ""
+                    if re.search(r'[.!?](?:\s|$)', sentence_buffer):
+                        out_queue.put(sentence_buffer.strip())
+                        sentence_buffer = ""
             
             # Send any remaining buffer
             if sentence_buffer and not user_speaking_event.is_set():
