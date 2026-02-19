@@ -8,11 +8,10 @@ from collections import Counter
 import matplotlib.pyplot as plt
 import pandas as pd
 from streamlit_autorefresh import st_autorefresh
-# ------------------------------
-# Configuration
-# ------------------------------
-CALL_LOGS_DIR = "../../call-logs"          # matches main.py
-LIVE_TRANSCRIPT_FILE = "../../call-logs/live_transcript.txt"   # optional live feed
+
+#Configuration
+CALL_LOGS_DIR = "../../call-logs"          #matches main.py
+LIVE_TRANSCRIPT_FILE = "../../call-logs/live_transcript.txt"   #Optional live feed
 
 
 st.set_page_config(
@@ -20,10 +19,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ==========================================================
-# MODEL LAYER
-# ==========================================================
-
+#Model Layer
 class CallModel:
     @staticmethod
     def read_live_transcript(lines=20):
@@ -58,10 +54,7 @@ class MoMModel:
                 return line.split(":")[1].strip()
         return "Unknown"
 
-# ==========================================================
-# VIEW LAYER
-# ==========================================================
-
+#View Layer
 class SidebarView:
     @staticmethod
     def render():
@@ -104,7 +97,7 @@ class MoMDetailView:
             st.info("No MoM files available.")
             return
 
-        # Select MoM
+        #Select MoM
         options = {
             f"{MoMModel.extract_call_id(f)} – "
             f"{datetime.fromtimestamp(os.path.getmtime(f)).strftime('%Y-%m-%d %H:%M')}"
@@ -115,12 +108,12 @@ class MoMDetailView:
         selected = st.selectbox("Select a call", options.keys())
         content = MoMModel.read_mom(options[selected])
 
-        # Display EXACT text content
+        #Display exact text content
         st.text(content)
 
         st.markdown("---")
 
-        # Owner actions (optional, no effect on text)
+        #Owner actions
         st.subheader("Owner Actions")
         st.button("Call Back")
         st.button("Assign to Sales")
@@ -137,9 +130,7 @@ class MoMAnalyticsView:
             st.info("No MoM data available.")
             return
 
-        # -----------------------------------
-        # COLLECT DATA
-        # -----------------------------------
+        #Collect Data
         lead_quality = []
         cities = []
         budgets = []
@@ -170,9 +161,7 @@ class MoMAnalyticsView:
                 elif line.startswith("Configuration:"):
                     configurations.append(line.split(":", 1)[1].strip())
 
-        # -----------------------------------
-        # LEAD QUALITY — METRICS + BAR GRAPH
-        # -----------------------------------
+        #Lead Quality Overview
         st.subheader("Lead Quality Overview")
 
         q_count = Counter(lead_quality)
@@ -183,7 +172,7 @@ class MoMAnalyticsView:
         col3.metric("Cold", q_count.get("Cold", 0))
 
         if q_count:
-            # Convert to DataFrame (IMPORTANT)
+            #Convert to DataFrame
             df_quality = pd.DataFrame(
                 q_count.items(),
                 columns=["Lead Quality", "Count"]
@@ -194,10 +183,7 @@ class MoMAnalyticsView:
             st.info("No lead quality data found.")
 
         st.markdown("---")
-
-        # -----------------------------------
-        # CITY-WISE DEMAND (BAR)
-        # -----------------------------------
+        #City Wise Demand
         st.subheader("City-wise Demand")
 
         if cities:
@@ -213,9 +199,7 @@ class MoMAnalyticsView:
 
         st.markdown("---")
 
-        # -----------------------------------
-        # BUDGET DISTRIBUTION (HISTOGRAM)
-        # -----------------------------------
+        #Budget Ditribution
         st.subheader("Budget Distribution (Lakhs)")
 
         if budgets:
@@ -224,15 +208,13 @@ class MoMAnalyticsView:
             ax.set_xlabel("Budget (Lakhs)")
             ax.set_ylabel("Number of Leads")
             st.pyplot(fig)
-            plt.close(fig)   # IMPORTANT
+            plt.close(fig)  
         else:
             st.info("No budget data available.")
 
         st.markdown("---")
 
-        # -----------------------------------
-        # CONFIGURATION DEMAND (BAR)
-        # -----------------------------------
+        #Configuration Demand
         st.subheader("Configuration Demand")
 
         if configurations:
@@ -247,10 +229,7 @@ class MoMAnalyticsView:
             st.info("No configuration data available.")
 
 
-# ==========================================================
-# CONTROLLER
-# ==========================================================
-
+#Controller
 class DashboardController:
     @staticmethod
     def run():
@@ -260,7 +239,7 @@ class DashboardController:
         mom_files = MoMModel.list_moms()
 
         if nav == "Live Call Details":
-            # Auto refresh every 1.5 seconds
+            #Auto refresh every 1.5 seconds
             st_autorefresh(interval=1500, key="live_call_refresh")
 
             transcript = CallModel.read_live_transcript()
@@ -272,9 +251,6 @@ class DashboardController:
         elif nav == "MoM Analytics":
             MoMAnalyticsView.render(mom_files)
 
-# ==========================================================
-# ENTRY POINT
-# ==========================================================
-
+#Entry point
 if __name__ == "__main__":
     DashboardController.run()
