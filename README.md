@@ -7,6 +7,10 @@ A real-time, conversational Voice AI system designed to act as a Smart Reception
 
 ---
 
+
+https://github.com/user-attachments/assets/697e0c4d-3a6e-4a2b-917a-9268bf8dc00e
+
+
 ## ✨ Key Features
 
 * **Real-Time Conversational AI:** Handles inbound and outbound phone calls using natural language.
