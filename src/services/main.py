@@ -6,6 +6,8 @@ from external_media import stream_to_whisper
 from tts import run_piper
 
 if __name__ == "__main__":
+    import multiprocessing
+    multiprocessing.set_start_method("spawn", force=True)
 
     text_queue = Queue()
     out_queue = Queue()

@@ -88,12 +88,22 @@ def setup_call(channel_id):
             ari_request('POST', f"bridges/{asr_bridge['id']}/addChannel", 
                         {"channel": [snoop_ch["id"], asr_ch["id"]]})
 
+            # 5. Start recording on the main bridge (captures both sides)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            rec_name = f"recording_{timestamp}"
+            ari_request('POST', f"bridges/{main_bridge_id}/record", {
+                "name": rec_name,
+                "format": "wav",
+                "ifExists": "overwrite"
+            })
+
             with calls_lock:
                 calls[channel_id] = {
                     "main_bridge": main_bridge_id, 
-                    "asr_bridge": asr_bridge['id']
+                    "asr_bridge": asr_bridge['id'],
+                    "recording_name": rec_name
                 }
-            print(f"Active: {channel_id} | Main: {main_bridge_id} | ASR: {asr_bridge['id']}")
+            print(f"Active: {channel_id} | Main: {main_bridge_id} | ASR: {asr_bridge['id']} | Rec: {rec_name}")
 
                 
 def run(transcript_queue: Queue,text_queue: Queue):
@@ -136,6 +146,30 @@ def run(transcript_queue: Queue,text_queue: Queue):
             with calls_lock:
                 data = calls.pop(cid, None)
                 if data:
+                    # Save the call recording BEFORE destroying bridges
+                    rec_name = data.get('recording_name')
+                    if rec_name:
+                        try:
+                            # Stop the live recording first
+                            ari_request('POST', f"recordings/live/{rec_name}/stop")
+                            # Download the stored recording file
+                            rec_url = f"{ARI_URL}/recordings/stored/{rec_name}/file"
+                            r = requests.get(rec_url, auth=(USER, PASSWORD))
+                            if r.status_code == 200:
+                                rec_dir = "../../call-recordings"
+                                os.makedirs(rec_dir, exist_ok=True)
+                                filepath = os.path.join(rec_dir, f"{rec_name}.wav")
+                                with open(filepath, "wb") as f:
+                                    f.write(r.content)
+                                print(f"Call recording saved to {filepath}")
+                            else:
+                                print(f"Recording download failed: {r.status_code}")
+                            # Clean up stored recording from Asterisk
+                            ari_request('DELETE', f"recordings/stored/{rec_name}")
+                        except Exception as e:
+                            print(f"Recording save error: {e}")
+
+                    # Now destroy bridges
                     ari_request('DELETE', f"bridges/{data['main_bridge']}")
                     ari_request('DELETE', f"bridges/{data['asr_bridge']}")
                     print(f"Ended: {cid}")
