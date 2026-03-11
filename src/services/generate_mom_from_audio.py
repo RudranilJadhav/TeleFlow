@@ -1,172 +1,239 @@
-
 import sys
 import os
 import json
-from datetime import datetime
-from groq import Groq
+from pathlib import Path
 from dotenv import load_dotenv
+from sarvamai import SarvamAI
+from groq import Groq
 
 load_dotenv()
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# ── Directories ──────────────────────────────────────────────
 
-STT_MODEL = "whisper-large-v3"
-LLM_MODEL = "llama-3.3-70b-versatile"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+TRANSCRIPTS_DIR = PROJECT_ROOT / "audio-transcripts"
+MOM_DIR = PROJECT_ROOT / "audio-mom"
 
-MOM_SYSTEM_PROMPT = """
+TRANSCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+MOM_DIR.mkdir(parents=True, exist_ok=True)
+
+# ── Sarvam AI: Speech-to-Text with Diarization ──────────────
+
+def transcribe(sarvam_key, audio_paths):
+    """Upload audio files to Sarvam AI batch STT and download diarized transcripts."""
+
+    client = SarvamAI(api_subscription_key=sarvam_key)
+
+    job = client.speech_to_text_job.create_job(
+        model="saaras:v3",
+        mode="translate",
+        language_code="unknown",
+        with_diarization=True,
+        num_speakers=2,
+    )
+
+    print(f"Uploading {len(audio_paths)} file(s) to Sarvam AI...")
+    job.upload_files(file_paths=audio_paths)
+    job.start()
+
+    print("Transcribing (this may take a few minutes)...")
+    job.wait_until_complete()
+
+    results = job.get_file_results()
+
+    for f in results["successful"]:
+        print(f"  ✓ {f['file_name']}")
+    for f in results.get("failed", []):
+        print(f"  ✗ {f['file_name']} — {f['error_message']}")
+
+    if results["successful"]:
+        job.download_outputs(output_dir=str(TRANSCRIPTS_DIR))
+        print(f"Transcripts saved to {TRANSCRIPTS_DIR}\n")
+
+# ── Extract diarized text from transcript JSON ───────────────
+
+def build_speaker_text(transcript_json):
+    """Convert a Sarvam transcript JSON into labelled speaker text."""
+
+    data = transcript_json
+
+    # Prefer diarized output
+    diarized = data.get("diarized_transcript", {})
+    entries = diarized.get("entries", [])
+
+    if entries:
+        lines = []
+        for e in entries:
+            speaker = e.get("speaker_id", "?")
+            text = e.get("transcript", "").strip()
+            if text:
+                lines.append(f"Speaker {speaker}: {text}")
+        return "\n".join(lines)
+
+    # Fallback to flat transcript
+    return data.get("transcript", "")
+
+# ── Groq: Generate MoM ──────────────────────────────────────
+
+MOM_SYSTEM_PROMPT = """\
 You are an expert meeting analyst.
 
-Your task is to generate a concise, structured Minutes of Meeting (MoM)
-from a raw meeting or call transcript.
+You will receive a diarized call transcript with speaker labels.
+Produce a detailed, structured Minutes of Meeting (MoM).
 
-PRIMARY OBJECTIVE
-• Extract ONLY unique, decision-relevant information
-• Merge repeated or rephrased statements into a single insight
-• Ignore fillers, greetings, confirmations, and small talk
-• Never restate the same fact in different words
+Rules:
+• Extract ONLY information explicitly stated in the transcript.
+• Do NOT infer, assume, or fabricate any detail.
+• If a field has no data, use null or an empty list.
+• Return ONLY valid JSON matching the schema below — no markdown fences, no commentary.
 
-EXTRACTION RULES
-• Do NOT infer, assume, or guess missing information
-• If a field is not explicitly stated, return null
-• Each field must contain information not present in any other field
-• Prefer short, factual phrases over long sentences
-
-NORMALIZATION RULES
-• Convert vague statements into neutral summaries
-  Example: "maybe sometime later" → "Undecided timeline"
-• Do NOT add explanations or commentary
-
-OUTPUT REQUIREMENTS
-• Return ONLY valid JSON
-• Must strictly match the schema below
-• No markdown, no explanations, no extra text
-
-SCHEMA
+JSON Schema:
 {
-  "meeting_title": string | null,
-  "participants": [string] | null,
-  "date": string | null,
-  "duration": string | null,
-  "summary": string,
-  "key_discussion_points": [string],
-  "decisions_made": [string],
-  "action_items": [
+  "meeting_title": "string",
+  "participants": ["string"],
+  "summary": "string — 3-5 sentence overview of the entire conversation",
+  "key_discussion_points": [
     {
-      "task": string,
-      "assignee": string | null,
-      "deadline": string | null
+      "topic": "string",
+      "details": "string — what was said about this topic",
+      "raised_by": "string | null"
     }
   ],
-  "follow_up": string | null,
-  "sentiment": "Positive" | "Neutral" | "Negative" | "Mixed"
+  "decisions_made": ["string"],
+  "action_items": [
+    {
+      "task": "string",
+      "assignee": "string | null",
+      "deadline": "string | null"
+    }
+  ],
+  "follow_up": "string | null",
+  "sentiment": "Positive | Neutral | Negative | Mixed"
 }
 """
 
+def generate_mom(groq_key):
+    """Read every transcript JSON and produce a MoM JSON via Groq."""
 
-def transcribe_audio(audio_path: str) -> str:
-    """Transcribe an audio file using Groq Whisper (multilingual)."""
-    with open(audio_path, "rb") as audio_file:
-        transcription = client.audio.transcriptions.create(
-            file=(os.path.basename(audio_path), audio_file.read()),
-            model=STT_MODEL,
-            response_format="verbose_json",
+    client = Groq(api_key=groq_key)
+    json_files = sorted(TRANSCRIPTS_DIR.glob("*.json"))
+
+    if not json_files:
+        print("No transcript JSONs found — nothing to summarise.")
+        return
+
+    print(f"Generating MoM for {len(json_files)} transcript(s)...\n")
+
+    for fp in json_files:
+        out_path = MOM_DIR / (fp.stem + "_mom.json")
+        if out_path.exists():
+            print(f"  ⏭  {fp.name} (MoM already exists)")
+            continue
+
+        data = json.loads(fp.read_text(encoding="utf-8"))
+        speaker_text = build_speaker_text(data)
+
+        if not speaker_text.strip():
+            print(f"  ⏭  {fp.name} (empty transcript)")
+            continue
+
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            temperature=0.2,
+            messages=[
+                {"role": "system", "content": MOM_SYSTEM_PROMPT},
+                {"role": "user",   "content": speaker_text},
+            ],
         )
-    return transcription.text
 
+        raw = response.choices[0].message.content.strip()
 
-def generate_mom(transcript: str) -> dict:
-    """Send the transcript to Groq LLM and extract a structured JSON MoM."""
-    response = client.chat.completions.create(
-        model=LLM_MODEL,
-        messages=[
-            {"role": "system", "content": MOM_SYSTEM_PROMPT},
-            {"role": "user", "content": transcript},
-        ],
-        temperature=0.2,
-        max_tokens=700,
-    )
+        # Parse the JSON from the LLM response
+        start = raw.find("{")
+        end = raw.rfind("}") + 1
 
-    raw = response.choices[0].message.content.strip()
+        if start < 0 or end <= start:
+            print(f"  ✗ {fp.name} — could not parse LLM JSON")
+            continue
 
-    # Extract the JSON object from the response
-    json_start = raw.find("{")
-    json_end = raw.rfind("}") + 1
-    return json.loads(raw[json_start:json_end])
+        mom = json.loads(raw[start:end])
 
+        # Attach metadata
+        mom["_meta"] = {
+            "source_file": fp.stem,
+            "stt": "sarvam_saaras_v3",
+            "llm": "groq_llama-3.3-70b",
+        }
+
+        out_path.write_text(json.dumps(mom, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"  ✓ {out_path.name}")
+
+    print("\nDone!")
+
+# ── Pipeline ─────────────────────────────────────────────────
+
+def run(audio_paths, sarvam_key, groq_key):
+    transcribe(sarvam_key, audio_paths)
+    generate_mom(groq_key)
+
+# ── CLI ──────────────────────────────────────────────────────
 
 def main():
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python generate_mom_from_audio.py <path_to_audio_file>")
-        print("  python generate_mom_from_audio.py --dir <directory_path>")
+        print("  python generate_mom_from_audio.py <audio_file>")
+        print("  python generate_mom_from_audio.py --dir <directory>")
         sys.exit(1)
+
+    sarvam_key = os.getenv("SARVAM_API_KEY")
+    groq_key   = os.getenv("GROQ_API_KEY")
+
+    if not sarvam_key:
+        sys.exit("Error: SARVAM_API_KEY not set in .env")
+    if not groq_key:
+        sys.exit("Error: GROQ_API_KEY not set in .env")
+
+    audio_paths = []
 
     if sys.argv[1] == "--dir":
-        dir_path = sys.argv[2] if len(sys.argv) > 2 else "../../call-recordings"
-        if not os.path.isdir(dir_path):
-            print(f"Error: Directory not found — {dir_path}")
-            sys.exit(1)
+        dir_path = sys.argv[2] if len(sys.argv) > 2 else str(PROJECT_ROOT / "call-recordings")
 
-        audio_extensions = {".wav", ".mp3", ".m4a", ".ogg", ".flac"}
-        files = sorted([
-            f for f in os.listdir(dir_path)
-            if os.path.splitext(f)[1].lower() in audio_extensions
-        ])
+        if not os.path.isdir(dir_path):
+            sys.exit(f"Error: Directory not found — {dir_path}")
+
+        exts = {".wav", ".mp3", ".m4a", ".ogg", ".flac"}
+        files = sorted(f for f in os.listdir(dir_path)
+                        if os.path.splitext(f)[1].lower() in exts)
 
         if not files:
-            print("No audio files found in directory.")
-            sys.exit(1)
+            sys.exit("No audio files found in directory.")
 
-        print(f"\nAudio files in {dir_path}:\n")
-        for i, f in enumerate(files, 1):
-            print(f"  {i}. {f}")
+        print(f"\nFiles in {dir_path}:\n")
+        for i, name in enumerate(files, 1):
+            print(f"  {i}. {name}")
+        print("\n  a. Process ALL\n")
 
-        choice = input("\nEnter file number: ").strip()
-        try:
-            idx = int(choice) - 1
-            if 0 <= idx < len(files):
-                audio_path = os.path.join(dir_path, files[idx])
-            else:
-                print("Invalid selection.")
-                sys.exit(1)
-        except ValueError:
-            print("Invalid input.")
-            sys.exit(1)
+        choice = input("Pick a number or 'a': ").strip().lower()
+
+        if choice == "a":
+            audio_paths = [os.path.abspath(os.path.join(dir_path, f)) for f in files]
+        else:
+            try:
+                idx = int(choice) - 1
+                if 0 <= idx < len(files):
+                    audio_paths = [os.path.abspath(os.path.join(dir_path, files[idx]))]
+                else:
+                    sys.exit("Invalid selection.")
+            except ValueError:
+                sys.exit("Invalid input.")
     else:
-        audio_path = sys.argv[1]
+        fp = sys.argv[1]
+        if not os.path.isfile(fp):
+            sys.exit(f"Error: File not found — {fp}")
+        audio_paths = [os.path.abspath(fp)]
 
-    if not os.path.isfile(audio_path):
-        print(f"Error: File not found — {audio_path}")
-        sys.exit(1)
+    run(audio_paths, sarvam_key, groq_key)
 
-    print(f"Transcribing: {audio_path}")
-    transcript = transcribe_audio(audio_path)
-    print(f"\n── Transcript ──")
-    print(transcript)
-
-    print(f"\nGenerating MoM...")
-    mom = generate_mom(transcript)
-
-    # Add metadata
-    mom["_meta"] = {
-        "source_audio": os.path.basename(audio_path),
-        "generated_at": datetime.now().isoformat(),
-        "stt_model": STT_MODEL,
-        "llm_model": LLM_MODEL,
-    }
-
-    mom_json = json.dumps(mom, indent=2, ensure_ascii=False)
-
-    mom_dir = os.path.join(os.path.dirname(__file__), "..", "..", "audio-mom")
-    os.makedirs(mom_dir, exist_ok=True)
-    base = os.path.splitext(os.path.basename(audio_path))[0]
-    output_path = os.path.join(mom_dir, f"{base}_mom.json")
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(mom_json)
-
-    print(f"\n── MoM (JSON) ──")
-    print(mom_json)
-    print(f"\nSaved to: {output_path}")
 
 if __name__ == "__main__":
     main()
