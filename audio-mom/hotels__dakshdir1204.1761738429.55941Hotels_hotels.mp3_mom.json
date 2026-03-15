@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about booking a hotel room. Speaker 1 is looking for a room for two adults and two children for one night. Speaker 0 offers a family room for ₹5000. Speaker 1 checks the rate online and finds a lower rate of ₹2200-₹2400 for a comfort category room. However, Speaker 0 explains that the comfort category rooms are sold out and only family rooms are available. The discussion ends with Speaker 1 considering the family room option.",
+  "key_discussion_points": [
+    {
+      "topic": "Room availability",
+      "details": "Speaker 0 has a private category room, which is a family room, available for ₹5000 per night. Speaker 1 is looking for a room for two adults and two children for one night.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Room rates",
+      "details": "Speaker 1 finds a lower rate of ₹2200-₹2400 for a comfort category room online. Speaker 0 explains that the rates online may not be up-to-date and that the comfort category rooms are sold out.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Booking and payment",
+      "details": "Speaker 1 is considering booking the family room. Speaker 0 warns that if the room is booked online and the payment is accepted, there may be a fine to pay.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Book the family room",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": "Meet tomorrow",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "hotels__dakshdir1204.1761738429.55941Hotels_hotels.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

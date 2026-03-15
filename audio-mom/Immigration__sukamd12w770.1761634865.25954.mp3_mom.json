@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about immigration services, specifically B to B immigration. The speakers discuss the rates and processing times for different countries, including Canada, UK, and Schengen. They also mention the surety of getting a visa and the payment required for the services. The conversation seems to be between a client and a representative of an immigration company.",
+  "key_discussion_points": [
+    {
+      "topic": "Immigration services",
+      "details": "The speakers discuss the rates and processing times for different countries, including Canada, UK, and Schengen.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Payment and surety",
+      "details": "The speakers mention the payment required for the services and the surety of getting a visa.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Countries and rates",
+      "details": "The speakers discuss the rates for different countries, including Canada, UK, and Schengen.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "The client needs to provide an original passport and a PDF scanned document.",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "The representative will call the client on their direct number to discuss further.",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761634865.25954.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

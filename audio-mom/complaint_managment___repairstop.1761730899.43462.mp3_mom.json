@@ -1,0 +1,49 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a washing machine issue. Speaker 0 had taken a washing machine from DG One and had registered a complaint. Speaker 1 is discussing the service charges and the process of fixing the issue. They are also discussing the cost of the parts and the payment process. The conversation is about the logistics of the repair and the communication between the two parties.",
+  "key_discussion_points": [
+    {
+      "topic": "Washing machine issue",
+      "details": "Speaker 0 had taken a washing machine from DG One and had registered a complaint. Speaker 1 is discussing the service charges and the process of fixing the issue.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Service charges",
+      "details": "Speaker 1 mentions that there will be a service charge of 1000. Speaker 0 is concerned about the payment process and wants to know if someone else will come to collect the payment.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Cost of parts",
+      "details": "Speaker 1 mentions that the cost of the parts will be determined after checking the washing machine. Speaker 0 is concerned about the cost and wants to know if it will be separate from the service charge.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "The technician will visit Speaker 0's location tomorrow to check the washing machine.",
+    "The service charge will be 1000.",
+    "The cost of the parts will be determined after checking the washing machine."
+  ],
+  "action_items": [
+    {
+      "task": "Technician to visit Speaker 0's location tomorrow",
+      "assignee": "Speaker 1",
+      "deadline": "Tomorrow"
+    },
+    {
+      "task": "Determine the cost of the parts",
+      "assignee": "Speaker 1",
+      "deadline": "After checking the washing machine"
+    }
+  ],
+  "follow_up": "Tomorrow",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "complaint_managment___repairstop.1761730899.43462.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

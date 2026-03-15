@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two speakers, one from Diglam Customer Care and the other working on a mortgage. They discuss a customer's issue with their name and address, and a complaint about an AC. The speakers exchange information, including the customer's name, mobile number, and complaint details. The issue is being addressed, and an update will be provided to the customer.",
+  "key_discussion_points": [
+    {
+      "topic": "Customer's name and address issue",
+      "details": "The customer's name is Madam Chachi Chaudhary, and there is an issue with the name and address. The speaker from Diglam Customer Care provides the customer's mobile number, and the other speaker checks the status.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Complaint about the AC",
+      "details": "There is a complaint about the AC, and the speaker from Diglam Customer Care provides the complaint details, including the date of the complaint, which is the 27th.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Correction fee and complaint registration",
+      "details": "The speaker working on the mortgage checks the correction fee and registers the complaint. The speaker from Diglam Customer Care will send the customer's details on WhatsApp.",
+      "raised_by": null
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Provide an update to the customer",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Send customer's details on WhatsApp",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "complaint_managment___repairstop.1761734002.48859.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

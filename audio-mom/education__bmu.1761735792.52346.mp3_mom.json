@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a parent inquiring about the admission procedure for their child, Pushpendra Singh, to the B. Pharma program. The representative provides information about the admission fees, semester fees, and hostel fees. The parent is from Bhiwani and is interested in knowing more about the hostel facilities. The representative asks the parent to come the next day for admission before the portal closes at 3 o'clock.",
+  "key_discussion_points": [
+    {
+      "topic": "Admission Procedure",
+      "details": "The representative informs the parent that the last date for admission is the next day and the B Pharma portal will close tomorrow.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Fees Structure",
+      "details": "The registration fee is one thousand, the admission fee is twelve thousand five hundred, and the per semester fee is forty-five thousand. The fee for one year will be ninety thousand.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Hostel Facilities",
+      "details": "There is a hostel available, and the fee is seventy thousand for the government, with an additional five thousand per year.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Come for admission the next day",
+      "assignee": "Speaker 0",
+      "deadline": "Before 3 o'clock"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761735792.52346.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

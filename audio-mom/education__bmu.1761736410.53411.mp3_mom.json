@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a student who has not received their DMC for the sixth and seventh semesters of their B Pharmacy course. The student's parent is inquiring about the status of the DMC and is seeking assistance to resolve the issue. The university representative is trying to help by asking for the student's details and promising to look into the matter. The parent is concerned about the delay in receiving the DMC, which is affecting the student's registration. The university representative is willing to help and has asked the parent to send the student to the university with their details so that they can assist further.",
+  "key_discussion_points": [
+    {
+      "topic": "DMC for sixth and seventh semesters",
+      "details": "The student has not received their DMC for the sixth and seventh semesters of their B Pharmacy course, which is affecting their registration.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "University assistance",
+      "details": "The university representative is willing to help the student and has asked for their details so that they can look into the matter.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Student details",
+      "details": "The parent has provided the student's details, including their name, course, and student ID.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send the student to the university with their details",
+      "assignee": "Speaker 1",
+      "deadline": "Tomorrow"
+    },
+    {
+      "task": "Look into the matter and assist the student",
+      "assignee": "Speaker 0",
+      "deadline": "Tomorrow"
+    }
+  ],
+  "follow_up": "Tomorrow",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761736410.53411.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

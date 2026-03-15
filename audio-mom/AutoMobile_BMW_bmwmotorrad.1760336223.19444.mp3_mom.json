@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 and Speaker 1, where Speaker 1 inquires about the location of a motor company's showroom and the availability of a specific vehicle model. Speaker 0 provides directions to the showroom and discusses the prices and colors of the vehicle. The conversation also involves exchanging contact information and discussing the sending of price details via WhatsApp.",
+  "key_discussion_points": [
+    {
+      "topic": "Showroom location",
+      "details": "The showroom is located near New Town, Biswabangla Gate, and Speaker 0 provides directions from Sodepur and Westin Hotel.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Vehicle availability and prices",
+      "details": "Speaker 0 discusses the availability of a vehicle model, including normal and limited edition versions, and provides prices for black and white colors.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Contact information exchange",
+      "details": "Speaker 1 provides their phone number, and Speaker 0 mentions sending price details via WhatsApp.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send price details via WhatsApp",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1760336223.19444.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

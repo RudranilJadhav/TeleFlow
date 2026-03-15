@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around the M3M project, an integrated counseling for MCM in Manesar, sectors 9, 10, and 11. The project includes industrial plots with a launching price of 1,25,000 per square meter. The speakers discuss the price, plot sizes, and payment terms. Speaker 0 is an authorized channel partner of MCM and provides information about the project. The conversation also touches on the location, industry type, and floor area ratio of the plots.",
+  "key_discussion_points": [
+    {
+      "topic": "M3M project",
+      "details": "The project is an integrated counseling for MCM in Manesar, sectors 9, 10, and 11, with a launching price of 1,25,000 per square meter for industrial plots.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Price and discounts",
+      "details": "The current price is 1,10,000 per square meter, with an inaugural discount of 15,000 rupees, and some dealers quoting 92,000 or 99,000 rupees.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Plot sizes and industry type",
+      "details": "Plot sizes of 400 and 450 square meters are available, with the industry being a green zone, allowing for non-polluting industries.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Floor Area Ratio (FAR)",
+      "details": "The FAR is 2.5, allowing for extra construction, with an example given of a 400-yard plot.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Payment terms",
+      "details": "A 50% payment is required, with the remaining 50% due on possession, which is expected in 6-7 months.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Make a 50% payment for the industrial plot",
+      "assignee": null,
+      "deadline": "6-7 months"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.39.11.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

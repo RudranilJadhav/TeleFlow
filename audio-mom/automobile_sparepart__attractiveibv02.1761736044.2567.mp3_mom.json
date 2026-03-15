@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a customer inquiring about purchasing a battery and a tire for their Pulsar 125 vehicle. The customer provides the vehicle details and the salesperson provides the pricing and offers for the battery and tire. The salesperson also mentions the warranty and other benefits of the products. The customer seems interested in making a purchase and plans to visit the store.",
+  "key_discussion_points": [
+    {
+      "topic": "Battery purchase",
+      "details": "The customer needs a battery for their Pulsar 125 vehicle and inquires about the price. The salesperson provides the pricing, which ranges from ₹2100 to ₹1800, depending on the size.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Tire purchase",
+      "details": "The customer also needs a tire for their vehicle and asks about the price. The salesperson provides the price of ₹1550 for a tubeless tire.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Warranty and offers",
+      "details": "The salesperson mentions that the tire has a three-year unconditional warranty, five years of manufacturing, and a gift, with no fitting charges.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Purchase battery and tire",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Visit the store",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "automobile_sparepart__attractiveibv02.1761736044.2567.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

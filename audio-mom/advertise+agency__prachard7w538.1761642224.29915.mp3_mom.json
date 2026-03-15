@@ -1,0 +1,54 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around the installation of ads on autos in Delhi, specifically in the Paharganj area. The discussion includes the cost, design, and installation process. Speaker 0 agrees to get the ads installed and provide an update on the cost. Speaker 1 is concerned about the cost and requests a reduction. The conversation also touches on the design and printing of the ads, with Speaker 0 offering to handle the printing and installation.",
+  "key_discussion_points": [
+    {
+      "topic": "Ad installation on autos",
+      "details": "The ads will be installed in the Paharganj area of Delhi, and Speaker 0 will ensure that the installation is done in front of Speaker 1.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Cost of ad installation",
+      "details": "The initial cost mentioned is 100 rupees per auto, but Speaker 1 requests a reduction to 80 rupees. Speaker 0 agrees to discuss the cost further.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Design and printing of ads",
+      "details": "Speaker 0 will handle the printing and installation of the ads, while Speaker 1 is responsible for providing the design.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "Speaker 0 will get the ads installed in the Paharganj area",
+    "Speaker 0 will provide an update on the cost",
+    "Speaker 1 will provide the design for the ads"
+  ],
+  "action_items": [
+    {
+      "task": "Provide design for the ads",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Get the ads installed in the Paharganj area",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Discuss and finalize the cost",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": "Speaker 0 will provide an update in a little while",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "advertise+agency__prachard7w538.1761642224.29915.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

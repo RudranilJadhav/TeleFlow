@@ -1,0 +1,47 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Priya",
+    "Ishan Kapoor"
+  ],
+  "summary": "The conversation is about Ishan Kapoor's vehicle checkup and accessories. Priya is assisting him with the process and providing information about the checkup and available accessories. They discuss the possibility of coming in today or tomorrow, and Priya suggests coming in tomorrow morning. They also talk about the cost of accessories and the process of getting them installed.",
+  "key_discussion_points": [
+    {
+      "topic": "Checkup",
+      "details": "Ishan Kapoor needs to get his first checkup done. Priya informs him that it will take three to four hours, but due to the rush on Sundays, it might take longer.",
+      "raised_by": "Ishan Kapoor"
+    },
+    {
+      "topic": "Accessories",
+      "details": "Ishan Kapoor inquires about accessories, including a 360 camera and a horn. Priya provides information about the availability of these accessories and the process of getting them installed.",
+      "raised_by": "Ishan Kapoor"
+    },
+    {
+      "topic": "Scheduling",
+      "details": "Priya suggests that Ishan Kapoor come in tomorrow morning for the checkup, as today is busy due to the Sunday rush.",
+      "raised_by": "Priya"
+    }
+  ],
+  "decisions_made": [
+    "Ishan Kapoor will come in tomorrow morning for the checkup"
+  ],
+  "action_items": [
+    {
+      "task": "Get the checkup done",
+      "assignee": "Ishan Kapoor",
+      "deadline": "Tomorrow morning"
+    },
+    {
+      "task": "Provide information about accessories",
+      "assignee": "Priya",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_servicetriumphvwdfu598.1761455078.9013.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

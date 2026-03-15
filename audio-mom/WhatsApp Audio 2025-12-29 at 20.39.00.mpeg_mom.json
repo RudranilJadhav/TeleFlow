@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a real estate project called Western. Speaker 1 inquires about the price of the project, and Speaker 0 provides information about the box price, which starts from 6.5 CR. The discussion also covers the sizes of the apartments, the PLC (Preferential Location Charge), and the branded residency concept. Speaker 1 expresses interest in visiting the site and seeing the sample apartment, but is concerned about the price. Speaker 0 offers to schedule a meeting and provide more information.",
+  "key_discussion_points": [
+    {
+      "topic": "Project Price",
+      "details": "The box price starts from 6.5 CR, with 3 BHK apartments priced at 25,000 and 4 BHK apartments priced at 26,000. The price for a 4-bedroom apartment is approximately 10.5 CR.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Apartment Sizes",
+      "details": "The apartment sizes start from 2673 square feet and go up to 4300 square feet. The 4-bedroom apartments are approximately 3900-4300 square feet.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "PLC (Preferential Location Charge)",
+      "details": "The PLC is 4-6% of the apartment price, depending on the floor and location. Speaker 1 inquires about getting an apartment without PLC, but Speaker 0 states that it is not applicable.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Branded Residency Concept",
+      "details": "The project is a branded residency, with a worldwide reputation. Speaker 0 emphasizes the difference in price between branded and non-branded residencies.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Schedule a meeting to discuss the project further",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Visit the site and see the sample apartment",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.39.00.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

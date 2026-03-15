@@ -1,0 +1,43 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about booking two rooms for four people, including two couples with children. The discussion involves the price of the rooms with and without dinner and breakfast, and the check-in and check-out times. The total cost for the rooms with dinner and breakfast is 12,000 rupees, and without dinner and breakfast is 9,000 rupees. The check-out time is set at 10 AM the next day, but is later extended to 12 o'clock.",
+  "key_discussion_points": [
+    {
+      "topic": "Room Booking",
+      "details": "Speaker 1 needs two rooms for four people, including two couples with children. Speaker 0 offers to install one mattress in each of the two rooms.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Pricing",
+      "details": "The price for the rooms with dinner and breakfast is 12,000 rupees, and without dinner and breakfast is 9,000 rupees. Speaker 0 also mentions a price of 6,000 rupees for one room with dinner and breakfast, and 4,000 rupees for one room without dinner and breakfast.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Check-in and Check-out",
+      "details": "The check-in time is set for the current day, and the check-out time is set at 10 AM the next day, but is later extended to 12 o'clock.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "Booking two rooms for four people, including two couples with children",
+    "Total cost for the rooms with dinner and breakfast is 12,000 rupees"
+  ],
+  "action_items": [
+    {
+      "task": "Share photograph of the rooms",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "hotels__dakshdir1204.1761740923.58980Hotels_hotels.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

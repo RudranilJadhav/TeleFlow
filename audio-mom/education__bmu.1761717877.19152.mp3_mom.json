@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a person inquiring about admission to a B.Ed course. The speaker provides information about the admission process, fees, and deadlines. The speaker also instructs the person to come to the office before 4 o'clock to complete the admission process. The fees for the course are discussed, including the total fee and the installment plan.",
+  "key_discussion_points": [
+    {
+      "topic": "B.Ed Admission",
+      "details": "The person is inquiring about admission to a B.Ed course and the speaker is providing information about the process.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Fees",
+      "details": "The total fee for the course is fifty-two thousand rupees per year, with an initial payment of twenty thousand rupees and four installments of eleven thousand rupees each.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Deadline",
+      "details": "The person needs to come to the office before 4 o'clock to complete the admission process, as the office will be closed after 5 o'clock.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Come to the office before 4 o'clock to complete the admission process",
+      "assignee": "Speaker 0",
+      "deadline": "Today"
+    },
+    {
+      "task": "Pay the initial fee of twenty thousand rupees",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761717877.19152.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

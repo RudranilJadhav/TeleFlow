@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a visa application process for traveling to Europe. Speaker 1 inquires about the process and requirements, while Speaker 0 provides information and guidance. The discussion also touches on the duration of the process and the necessary documents. Speaker 1 is from Rajasthan and is interested in traveling to Europe. The conversation appears to be between a client and a service provider or agent.",
+  "key_discussion_points": [
+    {
+      "topic": "Visa application process",
+      "details": "The process takes 30 to 40 days, and the necessary documents include original passport, Aadhaar card, PAN card, and family Aadhaar card.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Travel destination",
+      "details": "The conversation mentions Europe, Spain, the UK, Canada, and Australia as potential travel destinations.",
+      "raised_by": null
+    },
+    {
+      "topic": "Payment and fees",
+      "details": "The payment includes investment fees, five charges, and a penalty of one lakh rupees if the visa is not approved. The payment is to be made after arriving at the destination.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Gather necessary documents for visa application",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "WhatsApp Om Prakash with further information",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761726583.36637.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

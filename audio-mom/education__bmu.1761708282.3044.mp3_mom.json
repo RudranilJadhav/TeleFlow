@@ -1,0 +1,57 @@
+{
+  "meeting_title": "Discussion about Mastnath College Admission",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about the admission process for Mastnath College, specifically for the VLDD course. Speaker 0 provides information about the course, fees, and hostel facilities, while Speaker 1 asks questions and seeks clarification on various aspects. The discussion also touches upon concessions, daily commute, and practical labs. The speakers agree to meet in person to finalize the admission process.",
+  "key_discussion_points": [
+    {
+      "topic": "VLDD Course",
+      "details": "The VLDD course is a two-year program with a fee of two lakh fifteen thousand rupees per year. Admission is based on 12th-grade marks.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Hostel Facilities",
+      "details": "The hostel fee is seventy thousand rupees per year, with two students sharing a room. All other facilities will be provided.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Concessions",
+      "details": "Concessions will be considered, especially if two students are admitted. Speaker 0 invites Speaker 1 to visit the college to discuss further.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Daily Commute",
+      "details": "There is no bus service provided by the college. Students will have to arrange their own transportation.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Practical Labs",
+      "details": "Practical labs will be conducted, and students will be taken out for classes and practical sessions.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "Speaker 1 will visit the college to finalize the admission process"
+  ],
+  "action_items": [
+    {
+      "task": "Visit the college to discuss admission and concessions",
+      "assignee": "Speaker 1",
+      "deadline": "No specific deadline mentioned"
+    },
+    {
+      "task": "Provide contact number and other details",
+      "assignee": "Speaker 1",
+      "deadline": "Already completed"
+    }
+  ],
+  "follow_up": "Speaker 0 will call Speaker 1 to follow up on the admission process",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761708282.3044.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

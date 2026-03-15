@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 and Speaker 1, where Speaker 0 is promoting their company's services for creating ads on autos. Speaker 0 explains the different options and prices for their services, and Speaker 1 inquires about the costs and the process. The discussion revolves around the company's capabilities, pricing, and the potential collaboration between the two parties. Speaker 0 provides their contact information and invites Speaker 1 to get in touch to discuss further.",
+  "key_discussion_points": [
+    {
+      "topic": "Company Services",
+      "details": "Speaker 0's company provides services for creating ads on autos, including installation and maintenance. They have different pricing options, starting from 150 rupees per auto.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Pricing and Packages",
+      "details": "The company offers various packages, including a minimum of 300 autos, with prices starting from 45,000 rupees for the body. The cost per auto is 150 rupees.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Installation and Maintenance",
+      "details": "Speaker 0's company handles the installation and maintenance of the ads on the autos. They have a team that will install the ads and provide support.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Potential Collaboration",
+      "details": "Speaker 1 expresses interest in collaborating with Speaker 0's company and inquires about the process and costs. Speaker 0 provides their contact information and invites Speaker 1 to get in touch to discuss further.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Speaker 1 to contact Speaker 0 to discuss further collaboration",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "advertise+agency__prachard7w538.1761654018.6256.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

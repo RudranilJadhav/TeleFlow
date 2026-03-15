@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between a customer and a representative from BMW Motorrad Kolkata. The customer inquires about the location of the showroom, the availability of off-roading bikes, and their prices. The representative provides the necessary information and answers the customer's questions. The customer expresses interest in purchasing a bike and asks about the availability of a specific model.",
+  "key_discussion_points": [
+    {
+      "topic": "Showroom location",
+      "details": "The showroom is located near Bishwo Bangla, opposite West Bengal's Westin Hotel, and can be accessed through the service road at Eco Park gate number one.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Off-roading bikes",
+      "details": "The available models for off-roading are the 900 GS, with prices starting from 18 lakhs. The top model is around 20-26 lakhs.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "On-road price",
+      "details": "The on-road price of the 900 GS is roughly 19 lakhs.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Availability of bikes",
+      "details": "The customer can visit the showroom to see the available bikes, and the representative mentions that there is a C-pad 850 and another 870 model available.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "New model launch",
+      "details": "A new model, the 450, will be launched next year.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Visit the showroom to see the available bikes",
+      "assignee": "Speaker 0",
+      "deadline": "Tomorrow"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1760854902.16218.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

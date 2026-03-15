@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 (Ashutosh) and Speaker 1, discussing a potential real estate investment in a property called Whiteland Westin Residency. Speaker 0 represents a company called Elite Intra Private Limited, which is an authorized channel partner of Whiteland. They discuss the pricing, discounts, and services offered by Speaker 0's company. Speaker 1 is considering investing in the property and is evaluating the benefits of working with Speaker 0's company versus dealing directly with Whiteland.",
+  "key_discussion_points": [
+    {
+      "topic": "Property Investment",
+      "details": "Discussion about investing in Whiteland Westin Residency, a 3 BHK or 4 BHK property, with prices starting at ₹25000 plus PLC plus GST for 3 BHK and ₹26000 plus PLC plus GST for 4 BHK.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Discounts and Services",
+      "details": "Speaker 0 offers a 3% discount on the property price and highlights the services provided by his company, including coordination and paperwork assistance.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Company Representation",
+      "details": "Speaker 1 reveals that he is working on behalf of his company's director and is evaluating the investment opportunity.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Schedule a meeting to visit the property site",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Provide detailed costing and pricing information",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.38.59.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

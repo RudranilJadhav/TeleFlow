@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a car dent and the process of getting it repaired. Speaker 1 inquires about the cost of repair without a policy and is provided with a contact number for a body shop advisor. The discussion also involves the location of the service center and the name of the advisor. The speakers exchange basic information and confirm the details.",
+  "key_discussion_points": [
+    {
+      "topic": "Car dent repair",
+      "details": "Speaker 1 needs to repair a dent in their car and inquires about the cost without a policy. Speaker 0 provides information and a contact number for a body shop advisor.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Service center location",
+      "details": "The service center is located in Sector 72, Berhampur.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Body shop advisor contact",
+      "details": "The contact number for the body shop advisor is provided as 8929, and the advisor's name is Umesh, but later corrected to Venkat.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Contact the body shop advisor",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_servicetriumphvwdfu598.1761725248.34301.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

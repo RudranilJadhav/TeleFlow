@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two speakers discussing advertising services provided by Prasad Mehta Vyapar Nai Company. The company offers various advertising options, including vinyl, multi-permanent tattoo, and auto hood cover. The prices and details of each option are discussed. The speakers also discuss the possibility of working together, with the company sharing samples and prices on WhatsApp.",
+  "key_discussion_points": [
+    {
+      "topic": "Advertising services",
+      "details": "The company offers various advertising options, including vinyl, multi-permanent tattoo, and auto hood cover.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Prices",
+      "details": "The prices for each advertising option are discussed: vinyl (100 rupees per auto for 1 month), multi-permanent tattoo (150 rupees per auto for 3 months), and auto hood cover (550 rupees per auto for 3 months).",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Minimum order quantity",
+      "details": "The company requires a minimum order of 200 autos for each advertising option.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Share samples and prices on WhatsApp",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "advertise+agency__prachard7w538.1761730713.43166.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

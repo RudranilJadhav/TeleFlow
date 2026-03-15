@@ -1,0 +1,59 @@
+{
+  "meeting_title": "PhD Admission Inquiry",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a PhD admission inquiry at BMI University. Speaker 0 is inquiring about the admission process, fees, and requirements for the PhD program. Speaker 1 provides information and clarifies the process, including the online application, entrance exam, and fees. The discussion also covers the duration of the program, attendance requirements, and the possibility of submitting a research paper.",
+  "key_discussion_points": [
+    {
+      "topic": "Admission Process",
+      "details": "The admission process starts with online registration, followed by an entrance exam. The exam will be held in November, and the last date for registration is the 19th.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Fees",
+      "details": "The fee for the PhD program is one and a half lakh per year, and it's a three-year program. However, the program can be completed in three years or five years, and the fees will be paid accordingly.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Entrance Exam",
+      "details": "The entrance exam will be based on the graduation syllabus, and it will be held in November. The exam will be online, and the details will be confirmed later.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Attendance Requirements",
+      "details": "For students with GRF, 75% attendance is compulsory. However, for students with private jobs, attendance is not a problem.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Research Paper",
+      "details": "There is no need to submit a research paper for admission. However, after admission, students will be given a topic to research and submit a paper.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "The admission process will start with online registration",
+    "The entrance exam will be held in November",
+    "The fee for the PhD program is one and a half lakh per year"
+  ],
+  "action_items": [
+    {
+      "task": "Complete online registration",
+      "assignee": "Speaker 0",
+      "deadline": "19th"
+    },
+    {
+      "task": "Prepare for the entrance exam",
+      "assignee": "Speaker 0",
+      "deadline": "November"
+    }
+  ],
+  "follow_up": "Speaker 0 needs to visit the university for further clarification and confirmation of the admission process",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761714289.9519.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

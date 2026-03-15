@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around obtaining a visa for Canada and Europe. Speaker 0 discusses the process, costs, and time required for the visa application. They also mention the possibility of a tourist visa and the requirements for it. The speakers also touch upon the topic of refugee systems and the costs associated with them. The conversation is informal and appears to be between two individuals discussing visa options and their associated costs and processes.",
+  "key_discussion_points": [
+    {
+      "topic": "Canada Visa",
+      "details": "The Canada visa takes 4 months to process and is not a sure-shot visa. The cost for the visa is 22 lakh rupees.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Europe Visa",
+      "details": "The Europe visa is also discussed, with a mention of a 6-month visa. The cost for this visa is not specified in the conversation.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Tourist Visa",
+      "details": "A tourist visa is mentioned as an option, with a cost of 18 lakh rupees. The visa is for 29 countries, including Spain.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Refugee System",
+      "details": "The conversation touches upon the topic of refugee systems, with a mention of Canada's refugee system.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Apply for a visa",
+      "assignee": null,
+      "deadline": "4 months"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761728612.40134.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

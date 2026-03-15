@@ -1,0 +1,48 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about Speaker 1 wanting to bring their Porsche car in for its first service check. Speaker 0 informs them that the service will take around 2-3 hours and cannot be done on the same day due to prior bookings. They discuss alternative arrangements, including pickup and drop services, and decide to follow up the next day. The initial discussion about hotel service seems unrelated to the main topic.",
+  "key_discussion_points": [
+    {
+      "topic": "First service check for Porsche car",
+      "details": "Speaker 1 wants to bring their car in for its first service check, which is due after 1000 kilometers. Speaker 0 explains that the service will take around 2-3 hours and includes a checkup and washing.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Scheduling the service",
+      "details": "Speaker 0 informs Speaker 1 that the service cannot be done on the same day due to prior bookings and suggests visiting the next day. Speaker 1 expresses their availability constraints and asks about alternative arrangements.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Contact information and follow-up",
+      "details": "Speaker 0 asks for Speaker 1's direct phone number to follow up and discusses the possibility of sending a 'hi' on WhatsApp. However, Speaker 1 mentions that the number is not on WhatsApp, and they prefer a direct call.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "Speaker 1 will visit the service center the next day",
+    "Speaker 0 will call Speaker 1 in the morning to discuss further arrangements"
+  ],
+  "action_items": [
+    {
+      "task": "Schedule the first service check for Speaker 1's Porsche car",
+      "assignee": "Speaker 0",
+      "deadline": "The next day"
+    },
+    {
+      "task": "Discuss alternative arrangements, including pickup and drop services",
+      "assignee": "Speaker 0",
+      "deadline": "The next day"
+    }
+  ],
+  "follow_up": "Speaker 0 will call Speaker 1 in the morning to discuss further arrangements",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_servicetriumphvwdfu598.1761547771.25091.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

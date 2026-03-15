@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around a potential investment opportunity in a 140-acre township in sectors 9, 10, and 11. Speaker 1 is presenting the details of the plots, including their sizes and prices, to Speaker 0. The discussion also touches on the potential rental income and return on investment. The speakers are exploring the possibility of purchasing a plot, with Speaker 1 offering to help Speaker 0 find a suitable option. The conversation is informal and exploratory, with no concrete decisions made.",
+  "key_discussion_points": [
+    {
+      "topic": "Plot sizes and prices",
+      "details": "The plots range from 450 square meters to 2000 square meters, with prices starting at 1.1 lakh rupees per square meter. The total investment for a plot can start from 4.5 crores.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Rental income and ROI",
+      "details": "The rental income for a 500 square meter plot could be around 2.6 lakh rupees per month, with a potential ROI of more than 10-12%. The rent per square foot is estimated to be around 40 rupees, with potential for increase in the future.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Road infrastructure",
+      "details": "The area has 24-meter and 60-meter roads, with no smaller roads. The exact width of the roads in feet is not clearly stated.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Explore purchasing a plot in the 140-acre township",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Meet to discuss the plan and details",
+      "assignee": null,
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.39.06.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

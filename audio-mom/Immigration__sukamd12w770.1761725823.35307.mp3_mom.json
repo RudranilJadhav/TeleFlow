@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation appears to be about a visa application process. Speaker 0 is guiding Speaker 1 through the process, discussing the costs, biometrics, and timeline. Speaker 1 is seeking clarification on various aspects of the process. The conversation also touches on the location of the office where Speaker 1 needs to visit for the biometrics. The tone of the conversation is informative and helpful.",
+  "key_discussion_points": [
+    {
+      "topic": "Visa application process",
+      "details": "The process will take 40 days, and the biometrics will be done within the first 10-15 days. The total cost is 18-18 lakh, which needs to be paid by post.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Biometrics",
+      "details": "The biometrics will be done within the first 10-15 days, and the total process will take 40 days.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Costs",
+      "details": "The total cost is 18-18 lakh, which needs to be paid by post. The ticket and embassy fee will be covered.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Office location",
+      "details": "The office is located in Jalandhar, and Speaker 0 will WhatsApp the address to Speaker 1.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Pay the visa application fee of 18-18 lakh by post",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Visit the office in Jalandhar for biometrics",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761725823.35307.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

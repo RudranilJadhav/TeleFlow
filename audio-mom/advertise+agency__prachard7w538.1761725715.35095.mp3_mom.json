@@ -1,0 +1,40 @@
+{
+  "meeting_title": "Auto Advertisement Discussion",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about advertising on autos, specifically discussing the costs and materials used for the advertisements. Speaker 0 represents Prachar Mehta Vyapar company, and Speaker 1 is a potential client from Noida. They discuss different types of advertisements, including hood covers, vinyl, and permanent tattoos, along with their prices and durations. The client expresses interest in proceeding with the advertisement and requests a sample photo to be sent via WhatsApp.",
+  "key_discussion_points": [
+    {
+      "topic": "Advertisement Types and Prices",
+      "details": "The company offers three types of advertisements: hood covers for ₹450 per auto, vinyl for ₹100 per auto, and permanent tattoos for ₹150 per auto. The hood cover price includes installation, pasting, printing, material, and designing, and is guaranteed to last for 3 months.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Minimum Quantity Requirement",
+      "details": "The company has a minimum requirement of 200 autos for advertisement, but can accommodate smaller quantities if the client is willing to invest a good amount of money.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Sample Request",
+      "details": "Speaker 1 requests a sample photo of the advertisement to be sent via WhatsApp to confirm the details.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send sample photo of advertisement via WhatsApp",
+      "assignee": "Speaker 0",
+      "deadline": "Within 5 minutes"
+    }
+  ],
+  "follow_up": "Speaker 1 will confirm and let Speaker 0 know after reviewing the sample photo",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "advertise+agency__prachard7w538.1761725715.35095.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

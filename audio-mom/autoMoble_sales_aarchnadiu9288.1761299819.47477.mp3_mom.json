@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 and Speaker 1, where Speaker 0 is seeking assistance with an issue related to their vehicle. Speaker 1 is providing guidance and support to resolve the issue. The discussion revolves around the vehicle's registration and the need to contact the relevant authorities or the dealer from where the vehicle was purchased. Speaker 1 offers to arrange a callback to further assist Speaker 0.",
+  "key_discussion_points": [
+    {
+      "topic": "Vehicle Registration",
+      "details": "Speaker 0 is seeking assistance with their vehicle's registration and is being guided by Speaker 1 to contact the relevant authorities or the dealer from where the vehicle was purchased.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Contacting the Dealer",
+      "details": "Speaker 1 advises Speaker 0 to contact the dealer from where the vehicle was purchased to obtain the registration certificate (RC).",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Roz Meta Safety System",
+      "details": "Speaker 0 mentions that they were given Speaker 1's number by the Roz Meta Safety System.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Arrange a callback for Speaker 0",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_sales_aarchnadiu9288.1761299819.47477.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

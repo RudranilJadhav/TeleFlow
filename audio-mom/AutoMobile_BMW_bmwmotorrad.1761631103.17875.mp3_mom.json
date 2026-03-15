@@ -1,0 +1,58 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two speakers, where Speaker 1 inquires about a car booking, specifically the C10RR model, and discusses logistic charges and delivery details. Speaker 0 provides assistance and offers to forward the details to the team. The conversation also touches on a discount offer and a potential meeting at the showroom.",
+  "key_discussion_points": [
+    {
+      "topic": "Car Booking",
+      "details": "Speaker 1 inquired about the C10RR car model and its price. Speaker 0 offered to forward the details to the team.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Logistic Charges",
+      "details": "Speaker 1 asked about reducing existing logistic charges, and Speaker 0 offered to discuss the issue with the team.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Delivery Details",
+      "details": "Speaker 1 requested home delivery, but was initially told to go to the showroom. Speaker 0 later confirmed that home delivery was possible.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Discount Offer",
+      "details": "Speaker 1 mentioned a discount of 18,000 on Diwali, but Speaker 0 was unsure about the details and suggested meeting at the showroom to discuss.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "Speaker 1 will take delivery of the car on Thursday",
+    "Speaker 1 will go to Cuttack to collect the car"
+  ],
+  "action_items": [
+    {
+      "task": "Forward car booking details to the team",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Discuss logistic charges with the team",
+      "assignee": "Speaker 0",
+      "deadline": null
+    },
+    {
+      "task": "Meet at the showroom to discuss discount and delivery details",
+      "assignee": null,
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1761631103.17875.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

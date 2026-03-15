@@ -1,0 +1,53 @@
+{
+  "meeting_title": "BMW G310RR Purchase Discussion",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about the purchase of a BMW G310RR bike. The buyer inquires about the availability of the bike, its price, and the different variants. The seller provides information about the bike's price, including the on-road price, and the different colors available. The buyer also asks about the down payment, loan options, and the documents required for the purchase. The seller offers to send the details of the bike, including the price and colors, to the buyer's WhatsApp number.",
+  "key_discussion_points": [
+    {
+      "topic": "Availability of BMW G310RR",
+      "details": "The bike is available, but the special edition is out of stock.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Price of BMW G310RR",
+      "details": "The on-road price of the black variant is three lakh thirty thousand, and the on-road price of the sports variant is three lakh forty-five thousand.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Down payment and loan options",
+      "details": "The minimum down payment required is sixty thousand, and the loan options are available with a CIBIL score of above 765.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Documents required for purchase",
+      "details": "The buyer needs to provide their phone number and other details for the purchase.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "The buyer will discuss the purchase with their family and call back to book the bike.",
+    "The seller will send the details of the bike, including the price and colors, to the buyer's WhatsApp number."
+  ],
+  "action_items": [
+    {
+      "task": "Send bike details to buyer's WhatsApp number",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Discuss purchase with family and call back to book the bike",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1761656522.8535.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

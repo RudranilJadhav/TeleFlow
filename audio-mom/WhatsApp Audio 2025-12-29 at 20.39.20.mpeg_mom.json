@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 and Speaker 1, discussing an industrial plot investment opportunity in Gurgaon. Speaker 1 is promoting the plot, highlighting its benefits, location, and potential for appreciation. Speaker 0 is inquiring about the details, comparing it to another investment option, Omex, and seeking advice on whether to invest. The discussion covers various aspects, including the plot's size, price, payment plan, and rental income.",
+  "key_discussion_points": [
+    {
+      "topic": "Industrial Plot Location and Details",
+      "details": "The plot is located in Sector M9, M10, and M11, near the Dwaraka Expressway, with sizes ranging from 182 square meters to 1800 square meters. The company is offering an inaugural discount, with prices starting at ₹1.25 lakh per square meter.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Comparison with Omex",
+      "details": "Speaker 1 compares the industrial plot to Omex, stating that the plot is a better investment option due to its limited units, potential for appreciation, and rental income.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Payment Plan and Rental Income",
+      "details": "The payment plan is 50-50, with 50% payment due at the time of booking and the remaining 50% due at the time of possession. The expected rental income is around ₹40-45 per square foot.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Schedule a meeting between Speaker 0 and Speaker 1",
+      "assignee": "Speaker 1",
+      "deadline": "6th or 7th (after Speaker 0's marathon)"
+    }
+  ],
+  "follow_up": "Speaker 1 will call Speaker 0 from his personal number and share details via WhatsApp",
+  "sentiment": "Positive",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.39.20.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

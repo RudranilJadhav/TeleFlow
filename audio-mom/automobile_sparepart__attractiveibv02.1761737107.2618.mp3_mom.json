@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around the discussion of tires, their prices, and their features. Speaker 1 and Speaker 0 discuss the availability of tires, their costs, and the inclusion of oil with the purchase. They also compare prices and suggest checking the products before making a decision. The discussion also mentions the type of vehicle, a diesel car, and the suitability of the tires for it.",
+  "key_discussion_points": [
+    {
+      "topic": "Tire prices and features",
+      "details": "The tires are priced at 2450 and 2650 rupees, with the latter including two liters of oil. The tires have different grips, including a plain grip and a gravel one.",
+      "raised_by": null
+    },
+    {
+      "topic": "Comparison with market rates",
+      "details": "The price of 2450 rupees is mentioned to be lower than the market rate.",
+      "raised_by": null
+    },
+    {
+      "topic": "Type of vehicle and tire suitability",
+      "details": "The vehicle in question is a diesel car, and the tires are suitable for it. The inclusion of oil with the purchase is also discussed.",
+      "raised_by": null
+    },
+    {
+      "topic": "Tire brands and types",
+      "details": "The tires are CS tires, and the possibility of needing an MRF tire is also mentioned.",
+      "raised_by": null
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Check both tire grips before making a decision",
+      "assignee": null,
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "automobile_sparepart__attractiveibv02.1761737107.2618.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "meeting_title": "Property Investment Discussion",
+  "participants": [
+    "Speaker 1",
+    "Speaker 0"
+  ],
+  "summary": "The conversation revolves around a property investment opportunity in sector 114, Gurgaon. Speaker 1 presents the details of the investment, including the cost, payment structure, and potential returns. Speaker 0 expresses interest but is hesitant due to budget constraints and other commitments. The discussion concludes with Speaker 1 inviting Speaker 0 to visit the site and providing contact information.",
+  "key_discussion_points": [
+    {
+      "topic": "Property Investment Opportunity",
+      "details": "The investment is for a commercial mall in sector 114, Gurgaon, with a cost of 50 lakhs. The payment structure is 60% upfront and 40% later. The investment is expected to generate rentals of around 30,000 per month.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Budget Constraints",
+      "details": "Speaker 0 expresses hesitation due to budget constraints and other commitments, including a wedding and a trip to Secunderabad.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Site Visit",
+      "details": "Speaker 1 invites Speaker 0 to visit the site and provides contact information.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Visit the site",
+      "assignee": "Speaker 0",
+      "deadline": "Next week"
+    },
+    {
+      "task": "Share details",
+      "assignee": "Speaker 1",
+      "deadline": "Null"
+    }
+  ],
+  "follow_up": "Next week",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "realstate__crextechd11x557.1761724756.33331.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

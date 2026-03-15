@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about the admission process and registration for a course. Speaker 0 is inquiring about the fee structure, scholarship, and registration process, while Speaker 1 is providing information and guidance. The discussion also touches on the location and contact details for further assistance.",
+  "key_discussion_points": [
+    {
+      "topic": "Admission Process",
+      "details": "The admission process has just started, and registration is required. The registration will be open until November 18.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Fee Structure",
+      "details": "The fee structure is not clearly discussed, but it is mentioned that there is a scholarship available for those who have cleared the GRF.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Registration",
+      "details": "Registration has started, and it will be open until November 18. The registration process is the first step in the admission process.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Contact Details",
+      "details": "Speaker 1 provides a contact number, 870818378, for further assistance, and mentions that it is Doctor Monica's number.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Register for the course",
+      "assignee": "Speaker 0",
+      "deadline": "November 18"
+    },
+    {
+      "task": "Contact Doctor Monica for further assistance",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "education__bmu.1761718163.20038.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation between Speaker 0 and Speaker 1 appears to be about visa services, with Speaker 1 providing information about different types of visas and their costs. Speaker 1 also mentions their office location and invites Speaker 0 to visit. The conversation also involves discussions about personal names, phone numbers, and meeting arrangements. Speaker 1 provides their name as Aarti Apa Ji, but later says their name is Rishu. The conversation is informal and includes some personal and unrelated topics.",
+  "key_discussion_points": [
+    {
+      "topic": "Visa services",
+      "details": "Speaker 1 provides information about different types of visas, including a visa that allows entry to 29 countries, and mentions the cost of ₹18 lakhs. Speaker 1 also mentions a normal file payment of ₹14 to ₹15 lakh.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Office location and meeting arrangement",
+      "details": "Speaker 1 mentions their office location is near the Jalandhar bus stand and invites Speaker 0 to visit. Speaker 1 also provides their phone number and asks Speaker 0 to save it.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Personal names and phone numbers",
+      "details": "Speaker 1 provides their name as Aarti Apa Ji, but later says their name is Rishu. Speaker 0 and Speaker 1 also exchange phone numbers.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "Speaker 0 will visit Speaker 1's office with their passport",
+    "Speaker 1 will send a message on WhatsApp to Speaker 0"
+  ],
+  "action_items": [
+    {
+      "task": "Speaker 0 to visit Speaker 1's office with their passport",
+      "assignee": "Speaker 0",
+      "deadline": "Tomorrow"
+    },
+    {
+      "task": "Speaker 1 to send a message on WhatsApp to Speaker 0",
+      "assignee": "Speaker 1",
+      "deadline": "Today"
+    }
+  ],
+  "follow_up": "Speaker 0 will call Speaker 1 tomorrow",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761715631.14770.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

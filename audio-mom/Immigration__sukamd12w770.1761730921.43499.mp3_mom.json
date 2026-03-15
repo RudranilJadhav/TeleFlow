@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two individuals, Speaker 0 and Speaker 1, where Speaker 1 is inquiring about obtaining a Schengen visa. Speaker 0 provides information about the visa process, costs, and requirements. The discussion also touches on Speaker 1's personal experiences and challenges. The conversation appears to be a consultation or meeting to discuss visa application and related services.",
+  "key_discussion_points": [
+    {
+      "topic": "Schengen Visa Application",
+      "details": "Speaker 0 mentions that the payment for the Schengen visa will be 18 lakh rupees, and the process will take one month. Speaker 1 inquires about the application process and the costs involved.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Personal Experiences and Challenges",
+      "details": "Speaker 1 shares personal experiences, including an injury, operation, and financial losses. Speaker 0 offers to help with a favor, potentially related to the visa application or other services.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Meeting and Next Steps",
+      "details": "Speaker 0 invites Speaker 1 to visit their office, located near the Jalandhar bus stand, to discuss further. Speaker 0 will call Speaker 1 on their number to arrange a meeting.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Visit Speaker 0's office",
+      "assignee": "Speaker 1",
+      "deadline": "Tomorrow"
+    },
+    {
+      "task": "Discuss visa application and services",
+      "assignee": "Both Speaker 0 and Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": "Speaker 0 will call Speaker 1 on their number to arrange a meeting",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "Immigration__sukamd12w770.1761730921.43499.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

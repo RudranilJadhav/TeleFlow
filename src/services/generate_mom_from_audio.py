@@ -173,7 +173,15 @@ def generate_mom(groq_key):
 # ── Pipeline ─────────────────────────────────────────────────
 
 def run(audio_paths, sarvam_key, groq_key):
-    transcribe(sarvam_key, audio_paths)
+    BATCH_SIZE = 20
+
+    for i in range(0, len(audio_paths), BATCH_SIZE):
+        batch = audio_paths[i:i + BATCH_SIZE]
+
+        print(f"\nProcessing batch {i//BATCH_SIZE + 1} ({len(batch)} files)...\n")
+
+        transcribe(sarvam_key, batch)
+
     generate_mom(groq_key)
 
 # ── CLI ──────────────────────────────────────────────────────
@@ -201,7 +209,7 @@ def main():
         if not os.path.isdir(dir_path):
             sys.exit(f"Error: Directory not found — {dir_path}")
 
-        exts = {".wav", ".mp3", ".m4a", ".ogg", ".flac"}
+        exts = {".wav", ".mp3", ".m4a", ".ogg", ".flac", ".mpeg"}
         files = sorted(f for f in os.listdir(dir_path)
                         if os.path.splitext(f)[1].lower() in exts)
 

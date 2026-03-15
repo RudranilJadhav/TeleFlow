@@ -1,0 +1,35 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between a customer, Manoj Kumar Sharma, and a representative from Tata Motor Corporation. The customer had placed a refund request on the 17th and has not received it yet. The representative is trying to assist the customer in checking the status of the refund request. The customer is frustrated with the delay and wants to know the status of the refund. The representative explains that there is a problem during the festival season, which is causing the delay.",
+  "key_discussion_points": [
+    {
+      "topic": "Refund Request",
+      "details": "The customer had placed a refund request on the 17th and has not received it yet. The representative is trying to assist the customer in checking the status of the refund request.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Delay in Refund",
+      "details": "The customer is frustrated with the delay and wants to know the status of the refund. The representative explains that there is a problem during the festival season, which is causing the delay.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Check the status of the refund request",
+      "assignee": "Speaker 0",
+      "deadline": "10 minutes"
+    }
+  ],
+  "follow_up": "The representative will call the customer back in 10 minutes to update them on the status of the refund request.",
+  "sentiment": "Negative",
+  "_meta": {
+    "source_file": "autoMoble_sales_aarchnadiu9288.1761551622.31546.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

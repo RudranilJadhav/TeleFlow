@@ -1,0 +1,57 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between a customer service representative from Volkswagen and a car owner, Raghu Sharma, who is experiencing issues with his Polo GT TDI. The owner reports problems with the indicators and clutch plates, and the representative offers to schedule an appointment for the next day. The owner inquires about the cost and time required to replace the clutch kit, but the representative redirects him to a parts person for a more detailed explanation.",
+  "key_discussion_points": [
+    {
+      "topic": "Indicator issues",
+      "details": "The owner reports that all four indicators on both sides of the car have suddenly shut down.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Clutch plate issues",
+      "details": "The owner needs to get the clutch plates assessed and potentially replaced.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Appointment scheduling",
+      "details": "The representative offers to schedule an appointment for the next day, with the first slot available at 9:30.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Clutch kit replacement",
+      "details": "The owner inquires about the cost and time required to replace the clutch kit, but the representative redirects him to a parts person for a more detailed explanation.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "Schedule an appointment for the next day"
+  ],
+  "action_items": [
+    {
+      "task": "Assess and potentially replace the clutch plates",
+      "assignee": null,
+      "deadline": null
+    },
+    {
+      "task": "Replace the clutch kit",
+      "assignee": null,
+      "deadline": null
+    },
+    {
+      "task": "Provide the owner with more information about the cost and time required to replace the clutch kit",
+      "assignee": "Parts person",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_servicetriumphvwdfu598.1761554546.36653.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

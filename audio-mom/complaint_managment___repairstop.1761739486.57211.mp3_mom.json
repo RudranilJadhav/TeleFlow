@@ -1,0 +1,50 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around a customer issue with a cooling coil that needs to be repaired. The speakers discuss the customer's complaint, the technician's visit, and the charges for the repair. They also touch on other topics such as payment confirmation and account updates. The speakers seem to be clarifying details and coordinating actions to resolve the customer's issue. The conversation also mentions other individuals, including Dileep and Anish, who are involved in the process.",
+  "key_discussion_points": [
+    {
+      "topic": "Customer issue with cooling coil",
+      "details": "The customer's cooling coil is damaged and needs to be repaired. The technician has visited the customer, but there was an issue with the cooling cord, and the customer was not informed about the higher charges.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Payment confirmation",
+      "details": "The customer paid 9300, but the speaker had put 9800 in the system. The speaker needs to confirm the correct amount with the customer.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Account updates",
+      "details": "The speakers discuss updating the customer's account and adding a payment. They also mention adding Anish's details to the system.",
+      "raised_by": null
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Confirm payment amount with customer",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Update customer's account",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Add Anish's details to the system",
+      "assignee": null,
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "complaint_managment___repairstop.1761739486.57211.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

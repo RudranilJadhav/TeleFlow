@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between a customer and a service advisor from a BMW service center in Kolkata. The customer is purchasing a 2021 BMW model and has questions about the servicing process. The service advisor provides information on the routine checkup and requirements for the car. The customer also asks about the service rate and the tasks that need to be performed. The service advisor agrees to send a quotation to the customer via WhatsApp.",
+  "key_discussion_points": [
+    {
+      "topic": "BMW Servicing",
+      "details": "The customer has no idea about BMW servicing and wants to know the process. The service advisor explains the routine checkup and requirements for the car.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Service Rate",
+      "details": "The customer asks about the service rate and the tasks that need to be performed. The service advisor agrees to send a quotation to the customer via WhatsApp.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Routine Checkup",
+      "details": "The service advisor explains that the routine checkup includes changing the coolant, air filter, oil filter, and engine oil. The customer asks if this is a basic need every year.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send quotation to customer via WhatsApp",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1760515724.35337.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

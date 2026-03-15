@@ -1,0 +1,50 @@
+{
+  "meeting_title": "Hotel Room Booking",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about booking a hotel room at Darshan Grand Hotel. Speaker 0 inquires about room availability for their family, and Speaker 1 provides information about the available rooms and their rates. They discuss the room capacity, rates, and breakfast options. Speaker 0 asks for the total cost, and Speaker 1 provides the final rate with breakfast. The conversation ends with Speaker 0 saying they will talk to Speaker 1 in two minutes to finalize the booking.",
+  "key_discussion_points": [
+    {
+      "topic": "Room Availability",
+      "details": "Speaker 1 has only two family rooms available, with one double bed and one single bed in each room. An extra mattress can be installed in the room if needed.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Room Rate",
+      "details": "The room rate is ₹5500 per night with taxes, and ₹6000 per night with breakfast.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Room Capacity",
+      "details": "One room can accommodate 5 people, with two beds (one double and one single). Another room option has two double beds, but its rate is higher.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Breakfast Options",
+      "details": "Breakfast is available at an additional cost of ₹250 per person, excluding the 4-year-old daughter.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send the hotel location to Speaker 0",
+      "assignee": "Speaker 1",
+      "deadline": "Immediately"
+    },
+    {
+      "task": "Finalize the room booking",
+      "assignee": "Speaker 0",
+      "deadline": "Within 2 minutes"
+    }
+  ],
+  "follow_up": "Speaker 0 will talk to Speaker 1 in 2 minutes to finalize the booking",
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "hotels__dakshdir1204.1761739581.57313Hotels_hotels.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

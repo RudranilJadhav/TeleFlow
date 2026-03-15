@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about the purchase of a Tata Tiago CNG car. Speaker 1 provides information about the car's price and financing options. Speaker 0 inquires about the cost and discusses the possibility of a discount. The speakers also exchange contact information and plan to meet at the showroom. The car's on-road price is discussed, and the possibility of a discount is mentioned.",
+  "key_discussion_points": [
+    {
+      "topic": "Tata Tiago CNG availability and price",
+      "details": "The car is available in CNG, and the base model costs six lakh nine thousand rupees on-road.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Financing options",
+      "details": "The monthly EMI for a five-year loan would be twelve to thirteen thousand rupees, with a down payment of one lakh.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Discount",
+      "details": "A discount is mentioned, which would bring the price down to five lakh ninety thousand rupees.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Visit the showroom to discuss financing options and discounts",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_sales_aarchnadiu9288.1761632861.22295.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

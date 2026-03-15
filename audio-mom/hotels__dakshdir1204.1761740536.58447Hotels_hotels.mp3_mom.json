@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Kishore Sasangi",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about booking rooms at a resort for a family of twelve people. The speaker inquires about the rent for four rooms on Friday and Saturday. The discussion includes the cost of rooms, amenities, and the condition of the road leading to the resort. The speaker is provided with information about the charges, which include lunch, dinner, and breakfast, and is informed that the road is currently open.",
+  "key_discussion_points": [
+    {
+      "topic": "Room Booking",
+      "details": "The speaker inquires about booking four rooms for twelve people, with three people in one room, at either Daksh Resort and Amusement Park or Daksh Eden Green Luxury Resort.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Charges",
+      "details": "The charges for a room are 6000 rupees for two people, with an extra person costing around 1800 rupees, making triple occupancy around 7800 rupees.",
+      "raised_by": null
+    },
+    {
+      "topic": "Amenities",
+      "details": "The charges include lunch, dinner, and breakfast.",
+      "raised_by": null
+    },
+    {
+      "topic": "Road Condition",
+      "details": "The speaker inquires about the condition of the road leading to the resort, specifically the road with gravel in the forest, and is informed that it is currently open.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Confirm the booking",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "hotels__dakshdir1204.1761740536.58447Hotels_hotels.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

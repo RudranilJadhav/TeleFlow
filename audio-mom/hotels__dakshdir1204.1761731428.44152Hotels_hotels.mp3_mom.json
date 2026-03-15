@@ -1,0 +1,40 @@
+{
+  "meeting_title": "Booking a Resort",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about booking a resort for a family of 15 members for one night, Saturday, November 1st. The discussion includes the price per person, amenities, and activities available at the resort. The speaker from the resort provides details about the rooms, food, and adventure activities. The booking process is also discussed, with the speaker asking to send a 'Hi' message to share the details.",
+  "key_discussion_points": [
+    {
+      "topic": "Resort Booking",
+      "details": "The conversation is about booking a resort for a family of 15 members for one night, Saturday, November 1st.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Price and Amenities",
+      "details": "The price per person is 2200 rupees, which includes lunch, dinner, and breakfast. Adventure activities are on a chargeable basis, while other activities are complimentary.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Food and Activities",
+      "details": "The resort offers two Punjabi vegetables, one Gujarati vegetable, roti, buttermilk, papad, salad, dal fry, jeera rice, and one sweet for lunch. For dinner, Kachwadi and Chinese are available.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send a 'Hi' message to the resort to share booking details",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "hotels__dakshdir1204.1761731428.44152Hotels_hotels.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between two speakers, discussing an auto and its tire. Speaker 1 is inquiring about a specific tire for a Bajaj mini auto, and Speaker 0 is providing information and assistance. They also discuss a count of 125 and a time frame of one and a half to two months. The conversation appears to be a customer service or sales call.",
+  "key_discussion_points": [
+    {
+      "topic": "Auto and tire inquiry",
+      "details": "Speaker 1 inquired about a tire for a Bajaj mini auto, and Speaker 0 provided information and assistance.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Count of 125",
+      "details": "Speaker 1 mentioned a count of 125, specifically 120 plus 80, and Speaker 0 acknowledged.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Time frame",
+      "details": "Speaker 1 mentioned a time frame of one and a half to two months since something was put in, and Speaker 0 acknowledged.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "automobile_sparepart__attractiveibv02.1761555111.2029.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

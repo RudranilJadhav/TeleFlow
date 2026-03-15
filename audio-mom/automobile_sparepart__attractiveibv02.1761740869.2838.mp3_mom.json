@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a customer inquiring about buying a tire from the Attractive Group. The customer asks about the price, offers, and services provided. The representative provides information about the tire, its price, and the offers available, including a three-year unconditional warranty and free fitting charges. The customer also inquires about a gift and the duration of the offer.",
+  "key_discussion_points": [
+    {
+      "topic": "Tire purchase",
+      "details": "The customer inquired about buying a tire and asked about the price and offers available.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Tire price and offers",
+      "details": "The representative stated that the tire would cost fourteen hundred rupees and mentioned offers such as a three-year unconditional warranty, five years of manufacturing, and free fitting charges.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Gift and offer duration",
+      "details": "The customer asked about a gift and the duration of the offer, and the representative mentioned that the gift includes earbuds but did not know the end date of the offer.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Buy a tire",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "automobile_sparepart__attractiveibv02.1761740869.2838.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

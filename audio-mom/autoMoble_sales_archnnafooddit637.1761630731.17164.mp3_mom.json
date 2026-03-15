@@ -1,0 +1,45 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Rakesh Rai",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between Rakesh Rai and Speaker 1, where Speaker 1 inquires about the details of the Tata Nexon, specifically the CNG model. Rakesh Rai provides information about the car's features, pricing, and invites Speaker 1 to visit the showroom in Sector 62, Gurgaon. They also discuss the operating hours of the showroom and exchange contact information.",
+  "key_discussion_points": [
+    {
+      "topic": "Tata Nexon CNG model",
+      "details": "The car comes with CNG from the base to the top model, and there's no issue with it. The pricing starts from ₹9.27 lakh and goes up to ₹16.5 lakh.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Showroom location and operating hours",
+      "details": "The showroom is located in Sector 62, Gurgaon, and operates from 7 am to 7 pm. However, it's recommended to visit by 5 pm to allow time for discussion.",
+      "raised_by": "Rakesh Rai"
+    },
+    {
+      "topic": "Car features",
+      "details": "The car has features such as a sunroof and push button, with the half sunroof starting from ₹10.58 lakh and the full sunroof available in the top-end model.",
+      "raised_by": "Rakesh Rai"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Visit the showroom in Sector 62, Gurgaon",
+      "assignee": "Speaker 1",
+      "deadline": null
+    },
+    {
+      "task": "Send the location and transition brochure to Speaker 1",
+      "assignee": "Rakesh Rai",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "autoMoble_sales_archnnafooddit637.1761630731.17164.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

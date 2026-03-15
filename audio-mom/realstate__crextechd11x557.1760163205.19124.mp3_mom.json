@@ -1,0 +1,34 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation between Speaker 0 and Speaker 1 appears to be informal and casual, discussing various topics such as their locations, work, and personal characteristics. Speaker 0 mentions working at a company called PC Mantra and striving to earn a higher income. The conversation also touches on the idea that a person's voice and appearance are related. The discussion is friendly and lighthearted, with no specific agenda or formal topics being addressed.",
+  "key_discussion_points": [
+    {
+      "topic": "Location",
+      "details": "Speaker 1 is from Bihar, and Speaker 0 is from Noida, which is connected to Delhi.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Work",
+      "details": "Speaker 0 works at a company called PC Mantra and is striving to earn a higher income, up to one and a half lakh.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Personal characteristics",
+      "details": "The conversation touches on the idea that a person's voice and appearance are related, with Speaker 0 complimenting Speaker 1's voice and appearance.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [],
+  "follow_up": null,
+  "sentiment": "Positive",
+  "_meta": {
+    "source_file": "realstate__crextechd11x557.1760163205.19124.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

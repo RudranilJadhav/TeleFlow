@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about advertising services, specifically about installing ads on autos and caps. The speakers discuss the costs, sizes, and locations of the ads. Speaker 1 provides details about the services offered, including the costs for installing ads on autos and caps. The conversation also touches on the company's pan-India presence and the contact information for future communication.",
+  "key_discussion_points": [
+    {
+      "topic": "Advertising services",
+      "details": "The speakers discuss the costs, sizes, and locations of the ads, including the cost for one auto being four rupees and the cost for one cap being two thousand rupees per month.",
+      "raised_by": null
+    },
+    {
+      "topic": "Location",
+      "details": "The location for the advertising services is discussed, with Speaker 0 mentioning Vaishali Nagar Hanuman Nagar Officer's Campus.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Contact information",
+      "details": "Speaker 1 provides contact information, including the company's name, Sonam, and the instruction to call directly for future communication.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Provide details about the advertising services in Jaipur",
+      "assignee": "Speaker 1",
+      "deadline": "Tomorrow"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "advertise+agency__prachard7w538.1761571706.59448.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

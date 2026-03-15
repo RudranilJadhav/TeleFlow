@@ -1,0 +1,40 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about a commercial investment opportunity in a mall being built in Gurgaon. Speaker 0 is explaining the details of the investment to Speaker 1, including the return on investment and the payment terms. Speaker 1 is seeking clarification and details about the investment. The discussion is about a specific project where a mall will be built and shops will be rented out, with the investor receiving the rental income.",
+  "key_discussion_points": [
+    {
+      "topic": "Investment Opportunity",
+      "details": "A mall is being built in Gurgaon and the speaker is explaining the investment opportunity to Speaker 1, including a 12 percent return on investment and a lifetime rental income.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Payment Terms",
+      "details": "The investor needs to pay 60 percent of the investment amount now and the remaining 40 percent when the project is ready, with the option to pay after 2-2.5 years.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Project Details",
+      "details": "The project involves building a mall in Gurgaon, with shops being rented out and the investor receiving the rental income.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Send investment details to Speaker 1",
+      "assignee": "Speaker 0",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "realstate__crextechd11x557.1759735663.36410.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

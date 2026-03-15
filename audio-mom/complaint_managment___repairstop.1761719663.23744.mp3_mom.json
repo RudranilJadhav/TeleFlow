@@ -1,0 +1,53 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is between a customer and a customer care representative. The customer had called Digi One Customer Care to complete a service and had a previous conversation with the representative. The representative is trying to resolve the issue and has assigned an engineer to visit the customer. The customer and representative are discussing the details of the service and the charges. The representative is also trying to verify the customer's phone number and the previous conversation they had.",
+  "key_discussion_points": [
+    {
+      "topic": "Service completion",
+      "details": "The customer had called Digi One Customer Care to complete a service and had a previous conversation with the representative.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Charges and payment",
+      "details": "The representative and customer discussed the service charges, which were agreed to be 800 rupees. The representative mentioned that the brand people charge 1000 rupees for a visit, but they would charge 800 rupees for both the visit and the service.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Phone number verification",
+      "details": "The representative and customer were trying to verify the customer's phone number, which was 9930857781. The representative mentioned that they had a recording of the previous conversation and would send it to the customer.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Engineer visit",
+      "details": "The representative assigned an engineer to visit the customer and mentioned that they would leave that day and call before arriving.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [
+    "The representative assigned an engineer to visit the customer.",
+    "The customer and representative agreed on the service charges of 800 rupees."
+  ],
+  "action_items": [
+    {
+      "task": "Send the engineer to the customer's location",
+      "assignee": "Speaker 1",
+      "deadline": "Same day"
+    },
+    {
+      "task": "Send the recording of the previous conversation to the customer",
+      "assignee": "Speaker 1",
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "complaint_managment___repairstop.1761719663.23744.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

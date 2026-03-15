@@ -1,0 +1,45 @@
+{
+  "meeting_title": "Discussion on Westin Residence Project",
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation revolves around the Westin Residence project, a branded residency on Dwarka Expressway. Speaker 1 provides details about the project, including its location, size, and price range. The discussion also touches upon the appreciation value of branded residences and the current market trends. Speaker 0 inquires about the price and discount available, and Speaker 1 explains the inaugural discount and timely payment rebate. The conversation concludes with a discussion on the total price of the unit after discount.",
+  "key_discussion_points": [
+    {
+      "topic": "Project Overview",
+      "details": "The project is located in Sector 103 on Dwarka Expressway, with 13 high-rise towers on 21 acres of land, offering 3 and 4 BHK units with sizes ranging from 2600 to 3400 square feet.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Price Range",
+      "details": "The price range for the project is 25,000 rupees per square foot for 3 BHK and 26,000 rupees per square foot for 4 BHK.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Branded Residences",
+      "details": "Branded residences are more appreciated from an appreciation point of view, and developers are now focusing on bringing branded residences to the market.",
+      "raised_by": "Speaker 1"
+    },
+    {
+      "topic": "Discount and Pricing",
+      "details": "The inaugural discount is 11%, and the timely payment rebate is 750 rupees, bringing the price down to around 22,200 rupees per square foot. Further discounts are available, and the total price of the unit after discount is around 5.80 crores.",
+      "raised_by": "Speaker 1"
+    }
+  ],
+  "decisions_made": [],
+  "action_items": [
+    {
+      "task": "Further discussion on pricing and discount",
+      "assignee": null,
+      "deadline": null
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "WhatsApp Audio 2025-12-29 at 20.39.05.mpeg",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}

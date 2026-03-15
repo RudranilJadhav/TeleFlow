@@ -1,0 +1,43 @@
+{
+  "meeting_title": null,
+  "participants": [
+    "Speaker 0",
+    "Speaker 1"
+  ],
+  "summary": "The conversation is about Speaker 0 wanting to get their BMW T10R car serviced. Speaker 1 informs that today's schedule is full, but they can accommodate the service on Monday. However, Speaker 0 decides to bring the car in today and leave it for service. The car number is discussed and confirmed as WB 3020 GN. The service is scheduled for around 4:00 PM, and Speaker 1 assures that the service center will be open until 6:30 PM.",
+  "key_discussion_points": [
+    {
+      "topic": "Car Service",
+      "details": "Speaker 0 wants to get their BMW T10R car serviced. Speaker 1 informs that today's schedule is full, but they can accommodate the service on Monday.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Car Number",
+      "details": "The car number is discussed and confirmed as WB 3020 GN.",
+      "raised_by": "Speaker 0"
+    },
+    {
+      "topic": "Service Schedule",
+      "details": "The service is scheduled for around 4:00 PM, and Speaker 1 assures that the service center will be open until 6:30 PM.",
+      "raised_by": "Speaker 0"
+    }
+  ],
+  "decisions_made": [
+    "The car will be serviced today",
+    "The car will be left at the service center"
+  ],
+  "action_items": [
+    {
+      "task": "Service the car",
+      "assignee": "Speaker 1",
+      "deadline": "Today, around 4:00 PM"
+    }
+  ],
+  "follow_up": null,
+  "sentiment": "Neutral",
+  "_meta": {
+    "source_file": "AutoMobile_BMW_bmwmotorrad.1761376757.29926.mp3",
+    "stt": "sarvam_saaras_v3",
+    "llm": "groq_llama-3.3-70b"
+  }
+}
